@@ -1,0 +1,9 @@
+﻿<metro:Window x:Class="eigenein.SkypeNinja.Prototypes.Ui.ElysiumUi.MainWindow"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:metro="http://schemas.codeplex.com/elysium/theme"
+              Title="Skype Ninja" Height="350" Width="525">
+    <Grid>
+        
+    </Grid>
+</metro:Window>

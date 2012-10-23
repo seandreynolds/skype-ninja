@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Prototypes.Ui.Elysium.Properties {
+namespace eigenein.SkypeNinja.Prototypes.Ui.ElysiumUi.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Prototypes.Ui.Elysium.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Prototypes.Ui.Elysium.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("eigenein.SkypeNinja.Prototypes.Ui.ElysiumUi.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

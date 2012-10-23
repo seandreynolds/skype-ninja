@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Prototypes.Ui.Elysium.Properties {
+namespace eigenein.SkypeNinja.Prototypes.Ui.ElysiumUi.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
