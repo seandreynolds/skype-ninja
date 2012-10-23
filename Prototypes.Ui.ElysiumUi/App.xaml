@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Elysium.Theme;component/Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!--Bug in WPF 4.0 -->
+            <Style TargetType="{x:Type Window}"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
