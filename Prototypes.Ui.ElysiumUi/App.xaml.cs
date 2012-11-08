@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Windows;
 
-namespace Prototypes.Ui.Elysium
+namespace eigenein.SkypeNinja.Prototypes.Ui.ElysiumUi
 {
-    /// <summary>
-    /// Логика взаимодействия для App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App
     {
     }
 }
