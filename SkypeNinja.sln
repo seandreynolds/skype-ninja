@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototypes.Ui.ElysiumUi", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A8F44C22-E8E4-491C-9B00-13E227E9A415}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Cli\Cli.csproj", "{EF13B264-171A-42AE-B39D-E016D10BF7BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{A8F44C22-E8E4-491C-9B00-13E227E9A415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8F44C22-E8E4-491C-9B00-13E227E9A415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8F44C22-E8E4-491C-9B00-13E227E9A415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF13B264-171A-42AE-B39D-E016D10BF7BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF13B264-171A-42AE-B39D-E016D10BF7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF13B264-171A-42AE-B39D-E016D10BF7BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF13B264-171A-42AE-B39D-E016D10BF7BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
