@@ -2,11 +2,11 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("Prototypes.Ui.Elysium")]
+[assembly: AssemblyTitle("Elysium UI Prototype")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Prototypes.Ui.Elysium")]
+[assembly: AssemblyProduct("Skype Ninja")]
 [assembly: AssemblyCopyright("Pavel Perestoronin © 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
