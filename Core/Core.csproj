@@ -45,6 +45,21 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connectors\Connector.cs" />
+    <Compile Include="Connectors\SourceConnector.cs" />
+    <Compile Include="Connectors\Source\SkypeSourceConnector.cs" />
+    <Compile Include="Connectors\Source\SkypeSourceConnectorFactory.cs" />
+    <Compile Include="Connectors\TargetConnector.cs" />
+    <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
+    <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
+    <Compile Include="Connectors\UniversalConnectorFactory.cs" />
+    <Compile Include="Enums\ConnectorUriScheme.cs" />
+    <Compile Include="Interfaces\IConnector.cs" />
+    <Compile Include="Interfaces\IConnectorFactory.cs" />
+    <Compile Include="Interfaces\ISourceConnector.cs" />
+    <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
+    <Compile Include="Interfaces\ITargetConnector.cs" />
+    <Compile Include="Interfaces\ITargetConnectorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +67,7 @@
       <Link>SkypeNinja.pfx</Link>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
