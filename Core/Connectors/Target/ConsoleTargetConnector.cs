@@ -18,7 +18,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
             Console.WriteLine(
                 "Opened {0}://{1}", 
                 ConnectorUriScheme.Console,
-                path);
+                Path);
         }
 
         public override void Close()
@@ -26,7 +26,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
             Console.WriteLine(
                 "Closed {0}://{1}",
                 ConnectorUriScheme.Console,
-                path);
+                Path);
             Console.Out.Flush();
         }
 

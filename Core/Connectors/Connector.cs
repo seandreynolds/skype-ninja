@@ -5,7 +5,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
 {
     internal abstract class Connector : IConnector
     {
-        protected readonly string path;
+        private readonly string path;
 
         public string Path
         {
@@ -15,7 +15,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
             }
         }
 
-        public Connector(string path)
+        protected Connector(string path)
         {
             this.path = path;
         }
