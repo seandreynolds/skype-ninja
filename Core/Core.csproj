@@ -47,9 +47,6 @@
     <Reference Include="System.Data.SQLite">
       <HintPath>..\packages\System.Data.SQLite.1.0.82.0\lib\net40\System.Data.SQLite.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.SQLite.Linq">
-      <HintPath>..\packages\System.Data.SQLite.1.0.82.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connectors\Connector.cs" />
@@ -61,8 +58,10 @@
     <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
+    <Compile Include="Enums\MessageClass.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
+    <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />
     <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
     <Compile Include="Interfaces\ITargetConnector.cs" />
