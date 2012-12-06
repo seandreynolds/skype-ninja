@@ -15,5 +15,13 @@ namespace eigenein.SkypeNinja.Core.Interfaces
         {
             get;
         }
+
+        /// <summary>
+        /// Gets the message timestamp.
+        /// </summary>
+        DateTime TimeStamp
+        {
+            get;
+        }
     }
 }
