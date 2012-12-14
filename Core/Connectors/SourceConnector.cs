@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors
@@ -10,5 +11,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
         {
             // Do nothing.
         }
+
+        public abstract IEnumerable<IMessage> QueryMessages(IFilter filter);
     }
 }

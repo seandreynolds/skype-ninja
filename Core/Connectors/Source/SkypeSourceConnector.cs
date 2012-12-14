@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
+using eigenein.SkypeNinja.Core.Connectors.Common;
+using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source
 {
@@ -28,6 +31,31 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
             connection.Close();
         }
 
+        public override IEnumerable<IMessage> QueryMessages(IFilter filter)
+        {
+            // TODO: Make static Build that creates a builder and builds.
+            IQueryBuilder<string> builder = new SkypeQueryBuilder();
+            string query = builder.Build(filter.ToPartialQuery(builder));
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
+            {
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            yield return ReadMessage(reader);
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
+
+        private static IMessage ReadMessage(SQLiteDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

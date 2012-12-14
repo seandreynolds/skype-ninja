@@ -41,6 +41,9 @@
     <AssemblyOriginatorKeyFile>..\SkypeNinja.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine">
+      <HintPath>..\packages\CommandLineParser.1.9.3.31\lib\CommandLine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -59,9 +62,13 @@
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
     <Compile Include="Enums\MessageClass.cs" />
+    <Compile Include="Filtering\Filter.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
+    <Compile Include="Interfaces\IFilter.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
+    <Compile Include="Interfaces\IQueryBuilder.cs" />
+    <Compile Include="Interfaces\IPartialQuery.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />
     <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
     <Compile Include="Interfaces\ITargetConnector.cs" />
@@ -81,6 +88,9 @@
     <Content Include="x86\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Connectors\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
