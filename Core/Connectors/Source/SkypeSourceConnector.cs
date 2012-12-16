@@ -31,31 +31,18 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
             connection.Close();
         }
 
-        public override IEnumerable<IMessage> QueryMessages(IFilter filter)
+        public override IMessageEnumerator QueryMessages(IEnumerable<Filter> filters)
         {
-            // TODO: Make static Build that creates a builder and builds.
-            IQueryBuilder<string> builder = new SkypeQueryBuilder();
-            string query = builder.Build(filter.ToPartialQuery(builder));
-            using (SQLiteCommand command = new SQLiteCommand(query, connection))
+            SkypeSQLiteCommandFactory commandFactory = new SkypeSQLiteCommandFactory(
+                connection);
+
+            using (SQLiteCommand command = commandFactory.CreateReadMessagesCommand(filters))
             {
-                using (SQLiteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            yield return ReadMessage(reader);
-                        }
-                    }
-                }
+                SQLiteDataReader reader = command.ExecuteReader();
+                return new SkypeSourceMessageEnumerator(reader);
             }
         }
 
         #endregion
-
-        private static IMessage ReadMessage(SQLiteDataReader reader)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

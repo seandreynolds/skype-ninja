@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using eigenein.SkypeNinja.Core.Connectors.Common;
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
     internal interface ISourceConnector : IConnector
     {
-        IEnumerable<IMessage> QueryMessages(IFilter filter);
+        IMessageEnumerator QueryMessages(IEnumerable<Filter> filters);
     }
 }

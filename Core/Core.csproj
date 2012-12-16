@@ -52,23 +52,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connectors\Common\SkypeSQLiteCommandFactory.cs" />
     <Compile Include="Connectors\Connector.cs" />
     <Compile Include="Connectors\SourceConnector.cs" />
     <Compile Include="Connectors\Source\SkypeSourceConnector.cs" />
     <Compile Include="Connectors\Source\SkypeSourceConnectorFactory.cs" />
+    <Compile Include="Connectors\Source\SkypeSourceMessageEnumerator.cs" />
     <Compile Include="Connectors\TargetConnector.cs" />
     <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
     <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
     <Compile Include="Enums\MessageClass.cs" />
-    <Compile Include="Filtering\Filter.cs" />
+    <Compile Include="Connectors\Common\Filter.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
-    <Compile Include="Interfaces\IFilter.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
-    <Compile Include="Interfaces\IQueryBuilder.cs" />
-    <Compile Include="Interfaces\IPartialQuery.cs" />
+    <Compile Include="Interfaces\IMessageEnumerator.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />
     <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
     <Compile Include="Interfaces\ITargetConnector.cs" />
@@ -89,9 +89,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Connectors\Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

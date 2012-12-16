@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace eigenein.SkypeNinja.Core.Filtering
+namespace eigenein.SkypeNinja.Core.Connectors.Common
 {
     internal class Filter
     {
