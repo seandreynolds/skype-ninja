@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connectors\Common\Messages\ChatMessage.cs" />
+    <Compile Include="Connectors\Common\Messages\Message.cs" />
     <Compile Include="Connectors\Common\SkypeSourceMessageFactory.cs" />
     <Compile Include="Connectors\Common\SkypeSQLiteCommandFactory.cs" />
     <Compile Include="Connectors\Connector.cs" />

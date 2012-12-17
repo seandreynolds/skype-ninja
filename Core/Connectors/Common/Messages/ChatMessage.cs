@@ -1,16 +1,13 @@
 ﻿using System;
-using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Common.Messages
 {
-    internal class ChatMessage : IMessage
+    internal class ChatMessage : Message
     {
-        public DateTime TimeStamp
+        public ChatMessage(DateTime timeStamp)
+            : base(timeStamp)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            // Do nothing.
         }
     }
 }
