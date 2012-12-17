@@ -52,6 +52,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connectors\Common\Messages\ChatMessage.cs" />
+    <Compile Include="Connectors\Common\SkypeSourceMessageFactory.cs" />
     <Compile Include="Connectors\Common\SkypeSQLiteCommandFactory.cs" />
     <Compile Include="Connectors\Connector.cs" />
     <Compile Include="Connectors\SourceConnector.cs" />
@@ -62,9 +64,12 @@
     <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
     <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
+    <Compile Include="Enums\SkypeChatMessageStatus.cs" />
+    <Compile Include="Enums\SkypeChatMessageType.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
-    <Compile Include="Enums\MessageClass.cs" />
+    <Compile Include="Enums\SkypeEntityClass.cs" />
     <Compile Include="Connectors\Common\Filter.cs" />
+    <Compile Include="Enums\SkypeMessageType.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
     <Compile Include="Interfaces\IMessage.cs" />

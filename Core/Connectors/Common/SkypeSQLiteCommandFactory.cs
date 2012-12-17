@@ -30,7 +30,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
 
             command.Parameters.Add(new SQLiteParameter(
                 "@chatMessageClassId", 
-                MessageClass.ChatMessage));
+                SkypeEntityClass.ChatMessage));
 
             return command;
         }

@@ -5,7 +5,7 @@ namespace eigenein.SkypeNinja.Core.Enums
     /// <summary>
     /// Chat message type (messages.chatmsg_type field type).
     /// </summary>
-    internal enum ChatMessageType
+    internal enum SkypeChatMessageType
     {
         AddedMembers = 1,
         CreatedChatWith = 2,

@@ -5,7 +5,7 @@ namespace eigenein.SkypeNinja.Core.Enums
     /// <summary>
     /// Message type (messages.type field type).
     /// </summary>
-    internal enum MessageType
+    internal enum SkypeMessageType
     {
         SetTopic = 2,
         ConferenceOpensUp = 4,

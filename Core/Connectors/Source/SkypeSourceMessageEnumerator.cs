@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data.SQLite;
+using eigenein.SkypeNinja.Core.Connectors.Common;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source
@@ -45,7 +46,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
         {
             if (reader.HasRows && reader.Read())
             {
-                current = ReadMessage();
+                current = SkypeSourceMessageFactory.ReadMessage(reader);
                 return true;
             }
 
@@ -88,11 +89,6 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
             {
                 return Current;
             }
-        }
-
-        private IMessage ReadMessage()
-        {
-            throw new NotImplementedException();
         }
     }
 }

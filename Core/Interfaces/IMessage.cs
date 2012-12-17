@@ -1,5 +1,4 @@
 ﻿using System;
-using eigenein.SkypeNinja.Core.Enums;
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
@@ -8,14 +7,6 @@ namespace eigenein.SkypeNinja.Core.Interfaces
     /// </summary>
     internal interface IMessage
     {
-        /// <summary>
-        /// Gets the message class.
-        /// </summary>
-        MessageClass Class
-        {
-            get;
-        }
-
         /// <summary>
         /// Gets the message timestamp.
         /// </summary>

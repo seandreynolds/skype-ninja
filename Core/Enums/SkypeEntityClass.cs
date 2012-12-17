@@ -3,42 +3,37 @@
 namespace eigenein.SkypeNinja.Core.Enums
 {
     /// <summary>
-    /// Class of the message (chat message, call, ...).
+    /// Class of the Skype entity.
     /// </summary>
-    internal enum MessageClass
+    internal enum SkypeEntityClass
     {
         /// <summary>
-        /// Unknown message class (should not be used explicitly).
-        /// </summary>
-        Unknown = 0,
-
-        /// <summary>
-        /// Simple chat message.
+        /// Simple chat message (the "messages" table).
         /// </summary>
         ChatMessage = 1,
 
         /// <summary>
-        /// Skype call.
+        /// Skype call (the "calls" table).
         /// </summary>
         Call = 2,
 
         /// <summary>
-        /// SMS.
+        /// SMS (the "smses" table).
         /// </summary>
         Sms = 3,
 
         /// <summary>
-        /// File transfer.
+        /// File transfer (the "transfers" table).
         /// </summary>
         Transfer = 4,
 
         /// <summary>
-        /// Video message.
+        /// Video message (the "videomessages" table).
         /// </summary>
         VideoMessage = 5,
 
         /// <summary>
-        /// Voice mail.
+        /// Voice mail (the "voicemails" table).
         /// </summary>
         VoiceMail = 6
     }
