@@ -2,9 +2,9 @@
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
-    internal interface IConnector : IDisposable
+    public interface IConnector : IDisposable
     {
-        string Path
+        Uri Uri
         {
             get;
         }

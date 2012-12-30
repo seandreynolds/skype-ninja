@@ -5,8 +5,8 @@ namespace eigenein.SkypeNinja.Core.Connectors
 {
     internal abstract class TargetConnector : Connector, ITargetConnector
     {
-        protected TargetConnector(string path) 
-            : base(path)
+        protected TargetConnector(Uri uri) 
+            : base(uri)
         {
             // Do nothing.
         }

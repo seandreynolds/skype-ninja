@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using eigenein.SkypeNinja.Core.Connectors.Common;
+using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source
@@ -10,12 +11,12 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
     {
         private readonly SQLiteConnection connection;
 
-        public SkypeSourceConnector(string path)
-            : base(path)
+        public SkypeSourceConnector(Uri uri)
+            : base(uri)
         {
             string connectionString = String.Format(
                 "Data Source={0};Read Only=True",
-                path);
+                uri.LocalPath);
             connection = new SQLiteConnection(connectionString);
         }
 
@@ -31,7 +32,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
             connection.Close();
         }
 
-        public override IMessageEnumerator QueryMessages(IEnumerable<Filter> filters)
+        public override IMessageEnumerator QueryMessages(IEnumerable<FilterCollection> filters)
         {
             SkypeSQLiteCommandFactory commandFactory = new SkypeSQLiteCommandFactory(
                 connection);

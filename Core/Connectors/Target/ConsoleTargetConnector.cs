@@ -1,12 +1,11 @@
 ﻿using System;
-using eigenein.SkypeNinja.Core.Enums;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Target
 {
     internal class ConsoleTargetConnector : TargetConnector
     {
-        public ConsoleTargetConnector(string path) 
-            : base(path)
+        public ConsoleTargetConnector(Uri uri) 
+            : base(uri)
         {
             // Do nothing.
         }
@@ -16,17 +15,15 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
         public override void Open()
         {
             Console.WriteLine(
-                "Opened {0}://{1}", 
-                ConnectorUriScheme.Console,
-                Path);
+                "Opened {0}", 
+                Uri);
         }
 
         public override void Close()
         {
             Console.WriteLine(
-                "Closed {0}://{1}",
-                ConnectorUriScheme.Console,
-                Path);
+                "Closed {0}",
+                Uri);
             Console.Out.Flush();
         }
 

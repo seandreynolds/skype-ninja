@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
-    internal interface IMessageEnumerator : IEnumerator<IMessage>
+    public interface IMessageEnumerator : IEnumerator<IMessage>
     {
     }
 }

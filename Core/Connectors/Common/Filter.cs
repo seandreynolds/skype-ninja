@@ -2,7 +2,7 @@
 
 namespace eigenein.SkypeNinja.Core.Connectors.Common
 {
-    internal class Filter
+    public class Filter
     {
     }
 }

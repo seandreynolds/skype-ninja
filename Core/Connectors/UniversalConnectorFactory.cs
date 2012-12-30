@@ -7,7 +7,7 @@ using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors
 {
-    internal static class UniversalConnectorFactory
+    public static class UniversalConnectorFactory
     {
         private static readonly Dictionary<string, ISourceConnectorFactory> SourceFactoryCache =
             new Dictionary<string, ISourceConnectorFactory>()
@@ -29,7 +29,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
                 throw new KeyNotFoundException("Unknown source connector scheme.");
             }
 
-            return factory.CreateConnector(uri.PathAndQuery);
+            return factory.CreateConnector(uri);
         }
 
         public static ITargetConnector CreateTargetConnector(Uri uri)
@@ -40,7 +40,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
                 throw new KeyNotFoundException("Unknown target connector scheme.");
             }
 
-            return factory.CreateConnector(uri.PathAndQuery);
+            return factory.CreateConnector(uri);
         }
     }
 }

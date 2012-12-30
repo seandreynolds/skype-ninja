@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 using eigenein.SkypeNinja.Core.Enums;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Common
@@ -24,7 +25,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
             this.connection = connection;
         }
 
-        public SQLiteCommand CreateReadMessagesCommand(IEnumerable<Filter> filters)
+        public SQLiteCommand CreateReadMessagesCommand(IEnumerable<FilterCollection> filters)
         {
             SQLiteCommand command = new SQLiteCommand(ReadMessagesQuery, connection);
 

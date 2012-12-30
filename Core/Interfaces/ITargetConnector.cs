@@ -2,7 +2,7 @@
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
-    internal interface ITargetConnector : IConnector
+    public interface ITargetConnector : IConnector
     {
     }
 }

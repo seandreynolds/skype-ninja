@@ -52,8 +52,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connectors\Common\Messages\ChatMessage.cs" />
+    <Compile Include="Connectors\Common\Collections\TypedCollection.cs" />
+    <Compile Include="Connectors\Common\Filter.cs" />
     <Compile Include="Connectors\Common\Messages\Message.cs" />
+    <Compile Include="Connectors\Common\Collections\PropertyCollection.cs" />
     <Compile Include="Connectors\Common\SkypeSourceMessageFactory.cs" />
     <Compile Include="Connectors\Common\SkypeSQLiteCommandFactory.cs" />
     <Compile Include="Connectors\Connector.cs" />
@@ -65,16 +67,20 @@
     <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
     <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
+    <Compile Include="Enums\FilterType.cs" />
+    <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Enums\PropertyType.cs" />
     <Compile Include="Enums\SkypeChatMessageStatus.cs" />
     <Compile Include="Enums\SkypeChatMessageType.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
     <Compile Include="Enums\SkypeEntityClass.cs" />
-    <Compile Include="Connectors\Common\Filter.cs" />
+    <Compile Include="Connectors\Common\Collections\FilterCollection.cs" />
     <Compile Include="Enums\SkypeMessageType.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\IMessageEnumerator.cs" />
+    <Compile Include="Interfaces\IMessageProperty.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />
     <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
     <Compile Include="Interfaces\ITargetConnector.cs" />

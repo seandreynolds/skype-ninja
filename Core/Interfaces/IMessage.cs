@@ -1,16 +1,18 @@
 ﻿using System;
+using eigenein.SkypeNinja.Core.Connectors.Common;
+using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
     /// <summary>
     /// Represents a single message.
     /// </summary>
-    internal interface IMessage
+    public interface IMessage
     {
         /// <summary>
-        /// Gets the message timestamp.
+        /// Gets the message properties.
         /// </summary>
-        DateTime TimeStamp
+        PropertyCollection Properties
         {
             get;
         }

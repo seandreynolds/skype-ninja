@@ -7,9 +7,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
     {
         #region Implementation of ISourceConnectorFactory
 
-        public ISourceConnector CreateConnector(string path)
+        public ISourceConnector CreateConnector(Uri uri)
         {
-            return new SkypeSourceConnector(path);
+            return new SkypeSourceConnector(uri);
         }
 
         #endregion

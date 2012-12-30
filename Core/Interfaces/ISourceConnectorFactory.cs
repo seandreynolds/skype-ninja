@@ -4,6 +4,6 @@ namespace eigenein.SkypeNinja.Core.Interfaces
 {
     internal interface ISourceConnectorFactory : IConnectorFactory
     {
-        ISourceConnector CreateConnector(string path);
+        ISourceConnector CreateConnector(Uri uri);
     }
 }

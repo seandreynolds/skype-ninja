@@ -7,9 +7,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
     {
         #region Implementation of ITargetConnectorFactory
 
-        public ITargetConnector CreateConnector(string path)
+        public ITargetConnector CreateConnector(Uri uri)
         {
-            return new ConsoleTargetConnector(path);
+            return new ConsoleTargetConnector(uri);
         }
 
         #endregion

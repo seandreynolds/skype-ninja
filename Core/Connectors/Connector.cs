@@ -5,19 +5,19 @@ namespace eigenein.SkypeNinja.Core.Connectors
 {
     internal abstract class Connector : IConnector
     {
-        private readonly string path;
+        private readonly Uri uri;
 
-        public string Path
+        public Uri Uri
         {
             get
             {
-                return path;
+                return uri;
             }
         }
 
-        protected Connector(string path)
+        protected Connector(Uri uri)
         {
-            this.path = path;
+            this.uri = uri;
         }
 
         public abstract void Open();
