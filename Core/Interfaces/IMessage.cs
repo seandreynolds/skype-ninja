@@ -1,5 +1,4 @@
 ﻿using System;
-using eigenein.SkypeNinja.Core.Connectors.Common;
 using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 
 namespace eigenein.SkypeNinja.Core.Interfaces
