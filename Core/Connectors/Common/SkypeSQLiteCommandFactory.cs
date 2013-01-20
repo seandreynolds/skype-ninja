@@ -25,7 +25,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
             this.connection = connection;
         }
 
-        public SQLiteCommand CreateReadMessagesCommand(IEnumerable<FilterCollection> filters)
+        public SQLiteCommand CreateReadMessagesCommand(FilterCollection filters)
         {
             SQLiteCommand command = new SQLiteCommand(ReadMessagesQuery, connection);
 

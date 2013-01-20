@@ -32,7 +32,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source
             connection.Close();
         }
 
-        public override IMessageEnumerator QueryMessages(IEnumerable<FilterCollection> filters)
+        public override IMessageEnumerator QueryMessages(FilterCollection filters)
         {
             SkypeSQLiteCommandFactory commandFactory = new SkypeSQLiteCommandFactory(
                 connection);

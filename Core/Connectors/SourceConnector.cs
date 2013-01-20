@@ -14,6 +14,6 @@ namespace eigenein.SkypeNinja.Core.Connectors
         }
 
         public abstract IMessageEnumerator QueryMessages(
-            IEnumerable<FilterCollection> filters);
+            FilterCollection filters);
     }
 }
