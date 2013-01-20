@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommandLine;
+using NLog;
 using eigenein.SkypeNinja.Core.Connectors;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -8,6 +9,8 @@ namespace eigenein.SkypeNinja.Cli
 {
     public static class Program
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         public static void Main(string[] args)
         {
             Options options = new Options();
@@ -15,6 +18,7 @@ namespace eigenein.SkypeNinja.Cli
                 new CommandLineParserSettings(Console.Error));
             if (!parser.ParseArguments(args, options))
             {
+                Logger.Fatal("Invalid options.");
                 Environment.Exit(ExitCode.InvalidOptions);
             }
 
@@ -27,6 +31,7 @@ namespace eigenein.SkypeNinja.Cli
 
             if (!TryParseUri(options.SourceUriString, out sourceUri))
             {
+                Logger.Fatal("Could not parse source URI.");
                 Environment.Exit(ExitCode.InvalidUri);
             }
 
@@ -34,6 +39,7 @@ namespace eigenein.SkypeNinja.Cli
 
             if (!TryParseUri(options.TargetUriString, out targetUri))
             {
+                Logger.Fatal("Could not parse target URI.");
                 Environment.Exit(ExitCode.InvalidUri);
             }
 
@@ -47,6 +53,7 @@ namespace eigenein.SkypeNinja.Cli
                     sourceUri,
                     out sourceConnector))
                 {
+                    Logger.Fatal("Invalid source URI scheme.");
                     Environment.Exit(ExitCode.UnknownScheme);
                 }
                 if (!TryCreateConnector(
@@ -54,14 +61,17 @@ namespace eigenein.SkypeNinja.Cli
                     targetUri,
                     out targetConnector))
                 {
+                    Logger.Fatal("Invalid target URI scheme.");
                     Environment.Exit(ExitCode.UnknownScheme);
                 }
                 if (!TryOpenConnector(sourceConnector))
                 {
+                    Logger.Fatal("Could not open source connector.");
                     Environment.Exit(ExitCode.ConnectorOpenFailed);
                 }
                 if (!TryOpenConnector(targetConnector))
                 {
+                    Logger.Fatal("Could not open target connector.");
                     Environment.Exit(ExitCode.ConnectorOpenFailed);
                 }
             }
@@ -85,8 +95,9 @@ namespace eigenein.SkypeNinja.Cli
                 uri = new Uri(uriString);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.ErrorException("Error parsing the URI.", ex);
                 uri = null;
                 return false;
             }
@@ -100,11 +111,13 @@ namespace eigenein.SkypeNinja.Cli
         {
             try
             {
+                Logger.Info("Creating the connector {0} ...", uri);
                 connector = factory(uri);
                 return true;
             }
             catch (KeyNotFoundException)
             {
+                Logger.Error("Unknown scheme: {0}.", uri.Scheme);
                 connector = default(TConnector);
                 return false;
             }
@@ -114,11 +127,13 @@ namespace eigenein.SkypeNinja.Cli
         {
             try
             {
+                Logger.Info("Opening the connector {0} ...", connector.Uri);
                 connector.Open();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.ErrorException("Error opening the connector.", ex);
                 return false;
             }
         }

@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="Connectors\Common\Collections\ItemCollection.cs" />
     <Compile Include="Connectors\Common\Filter.cs" />
-    <Compile Include="Connectors\Common\Messages\Message.cs" />
+    <Compile Include="Connectors\Common\Message.cs" />
     <Compile Include="Connectors\Common\Collections\PropertyCollection.cs" />
     <Compile Include="Connectors\Common\SkypeSourceMessageFactory.cs" />
     <Compile Include="Connectors\Common\SkypeSQLiteCommandFactory.cs" />
