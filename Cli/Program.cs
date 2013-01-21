@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using CommandLine;
 using NLog;
+using eigenein.SkypeNinja.Cli.Common;
 using eigenein.SkypeNinja.Core.Connectors;
+using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
+using eigenein.SkypeNinja.Core.Copying;
+using eigenein.SkypeNinja.Core.Exceptions;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Cli
@@ -54,7 +58,7 @@ namespace eigenein.SkypeNinja.Cli
                     out sourceConnector))
                 {
                     Logger.Fatal("Invalid source URI scheme.");
-                    Environment.Exit(ExitCode.UnknownScheme);
+                    Environment.Exit(ExitCode.UnknownUriScheme);
                 }
                 if (!TryCreateConnector(
                     UniversalConnectorFactory.CreateTargetConnector,
@@ -62,7 +66,7 @@ namespace eigenein.SkypeNinja.Cli
                     out targetConnector))
                 {
                     Logger.Fatal("Invalid target URI scheme.");
-                    Environment.Exit(ExitCode.UnknownScheme);
+                    Environment.Exit(ExitCode.UnknownUriScheme);
                 }
                 if (!TryOpenConnector(sourceConnector))
                 {
@@ -74,6 +78,13 @@ namespace eigenein.SkypeNinja.Cli
                     Logger.Fatal("Could not open target connector.");
                     Environment.Exit(ExitCode.ConnectorOpenFailed);
                 }
+
+                // TODO: filters.
+                CopyMessages(sourceConnector, null, targetConnector);
+            }
+            catch (Exception ex)
+            {
+                Logger.FatalException("Copying has failed.", ex);
             }
             finally
             {
@@ -88,6 +99,66 @@ namespace eigenein.SkypeNinja.Cli
             }
         }
 
+        private static void CopyMessages(
+            ISourceConnector sourceConnector,
+            FilterCollection filters,
+            ITargetConnector targetConnector)
+        {
+            ICopier copier = CopierFactory.CreateCopier(
+                sourceConnector, 
+                filters,
+                targetConnector);
+
+            int messageCount = 0;
+            int messageCopiedCount = 0;
+            int messageSkippedCount = 0;
+
+            while (true)
+            {
+                bool messageCollectionEndPassed = false;
+                bool messageCopied = false;
+                
+                try
+                {
+                    messageCollectionEndPassed = !copier.CopyNextMessage();
+                    messageCopied = true;
+                }
+                catch (MessageSkippedException)
+                {
+                    messageSkippedCount += 1;
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException("Could not migrate the message.", ex);
+                }
+
+                if (!messageCollectionEndPassed)
+                {
+                    messageCount += 1;
+                    if (messageCopied)
+                    {
+                        messageCopiedCount += 1;
+                    }
+                    if (messageCount % 100 == 0)
+                    {
+                        Logger.Info("{0} of {1} messages copied.", messageCopiedCount, messageCount);
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            Logger.Info("Copying has been finished.");
+            Logger.Info("{0} messages copied.", messageCopiedCount);
+            Logger.Info("{0} messages skipped.", messageSkippedCount);
+            Logger.Info("{0} messages failed.", messageCount - messageCopiedCount - messageSkippedCount);
+        }
+
+        /// <summary>
+        /// Tries to parse the URI.
+        /// </summary>
         private static bool TryParseUri(string uriString, out Uri uri)
         {
             try
@@ -103,6 +174,9 @@ namespace eigenein.SkypeNinja.Cli
             }
         }
 
+        /// <summary>
+        /// Tries to create a connector by the URI using the specified factory.
+        /// </summary>
         private static bool TryCreateConnector<TConnector>(
             Func<Uri, TConnector> factory,
             Uri uri, 
@@ -123,6 +197,9 @@ namespace eigenein.SkypeNinja.Cli
             }
         }
 
+        /// <summary>
+        /// Tries to open the connector.
+        /// </summary>
         private static bool TryOpenConnector(IConnector connector)
         {
             try

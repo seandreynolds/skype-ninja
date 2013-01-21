@@ -11,10 +11,10 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
 
         private readonly PropertyCollection properties;
 
-        public Message(MessageType messageType, PropertyCollection properties)
+        public Message(MessageType messageType)
         {
             this.messageType = messageType;
-            this.properties = properties;
+            this.properties = new PropertyCollection();
         }
 
         public MessageType MessageType

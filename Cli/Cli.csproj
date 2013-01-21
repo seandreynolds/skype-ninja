@@ -54,8 +54,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExitCode.cs" />
-    <Compile Include="Options.cs" />
+    <Compile Include="Common\ExitCode.cs" />
+    <Compile Include="Common\Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

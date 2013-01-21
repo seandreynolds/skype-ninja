@@ -13,9 +13,11 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
                    author as author,
                    from_dispname as fromDisplayName,
                    timestamp as timestamp,
+                   type as messageType,
                    body_xml as body,
                    chatmsg_type as chatMessageType,
                    chatmsg_status as chatMessageStatus
+            from messages
         ";
 
         private readonly SQLiteConnection connection;

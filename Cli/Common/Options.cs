@@ -2,8 +2,11 @@
 using CommandLine;
 using CommandLine.Text;
 
-namespace eigenein.SkypeNinja.Cli
+namespace eigenein.SkypeNinja.Cli.Common
 {
+    /// <summary>
+    /// Represents the application options.
+    /// </summary>
     internal class Options : CommandLineOptionsBase
     {
         [Option(

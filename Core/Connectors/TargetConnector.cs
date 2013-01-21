@@ -10,5 +10,10 @@ namespace eigenein.SkypeNinja.Core.Connectors
         {
             // Do nothing.
         }
+
+        /// <summary>
+        /// Inserts the message into the target.
+        /// </summary>
+        public abstract void InsertMessage(IMessage message);
     }
 }

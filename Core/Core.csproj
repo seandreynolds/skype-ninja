@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Attributes\FieldValueTypeAttribute.cs" />
+    <Compile Include="Common\Helpers\DataReaderExtensions.cs" />
     <Compile Include="Common\Helpers\FieldAttributeCache.cs" />
     <Compile Include="Connectors\Common\Collections\ItemCollection.cs" />
     <Compile Include="Connectors\Common\Filter.cs" />
@@ -66,6 +67,9 @@
     <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
     <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
+    <Compile Include="Copying\Copier.cs" />
+    <Compile Include="Copying\CopierFactory.cs" />
+    <Compile Include="Copying\UniversalCopier.cs" />
     <Compile Include="Enums\FilterType.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Enums\PropertyType.cs" />
@@ -75,11 +79,12 @@
     <Compile Include="Enums\SkypeEntityClass.cs" />
     <Compile Include="Connectors\Common\Collections\FilterCollection.cs" />
     <Compile Include="Enums\SkypeMessageType.cs" />
+    <Compile Include="Exceptions\MessageSkippedException.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
+    <Compile Include="Interfaces\ICopier.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\IMessageEnumerator.cs" />
-    <Compile Include="Interfaces\IMessageProperty.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />
     <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
     <Compile Include="Interfaces\ITargetConnector.cs" />

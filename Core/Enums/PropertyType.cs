@@ -12,6 +12,12 @@ namespace eigenein.SkypeNinja.Core.Enums
         /// Message creation time.
         /// </summary>
         [FieldValueType(typeof(DateTime))]
-        Timestamp
+        Timestamp,
+
+        /// <summary>
+        /// Message body.
+        /// </summary>
+        [FieldValueType(typeof(string))]
+        Body
     }
 }

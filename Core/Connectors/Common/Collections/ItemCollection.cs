@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Common.Helpers;
 
@@ -25,24 +26,28 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common.Collections
                 attribute.Validate(item);
             }
 
-            GetSubList(itemType).Add(item);
-        }
-
-        /// <summary>
-        /// Gets a list of items of the specified type.
-        /// </summary>
-        private List<TItem> GetSubList(TItemType itemType)
-        {
             lock (items)
             {
                 List<TItem> subList;
                 if (!items.TryGetValue(itemType, out subList))
                 {
-                    subList = new List<TItem>();
+                    subList = new List<TItem> {item};
                     items.Add(itemType, subList);
                 }
-                return subList;
             }
+        }
+
+        public bool TryGetItem(TItemType itemType, out TItem item)
+        {
+            List<TItem> subList;
+            if (!items.TryGetValue(itemType, out subList) || subList.Count == 0)
+            {
+                item = default(TItem);
+                return false;
+            }
+
+            item = subList.First();
+            return true;
         }
     }
 }

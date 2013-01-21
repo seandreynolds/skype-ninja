@@ -1,4 +1,6 @@
 ﻿using System;
+using eigenein.SkypeNinja.Core.Enums;
+using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Target
 {
@@ -25,6 +27,20 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
                 "Closed {0}",
                 Uri);
             Console.Out.Flush();
+        }
+
+        /// <summary>
+        /// Inserts the message into the target.
+        /// </summary>
+        public override void InsertMessage(IMessage message)
+        {
+            Console.WriteLine("Message {0}", message.MessageType);
+            object body;
+            if (message.Properties.TryGetItem(PropertyType.Body, out body))
+            {
+                Console.WriteLine("Body: {0}", body);
+            }
+            Console.WriteLine();
         }
 
         #endregion
