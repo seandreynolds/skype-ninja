@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Attributes\FieldValueTypeAttribute.cs" />
+    <Compile Include="Common\CopyingStatistics.cs" />
     <Compile Include="Common\Helpers\DataReaderExtensions.cs" />
     <Compile Include="Common\Helpers\FieldAttributeCache.cs" />
     <Compile Include="Connectors\Common\Collections\ItemCollection.cs" />
