@@ -71,6 +71,7 @@
     <Compile Include="Copying\CopierFactory.cs" />
     <Compile Include="Copying\UniversalCopier.cs" />
     <Compile Include="Enums\FilterType.cs" />
+    <Compile Include="Enums\MessageSkipReason.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Enums\PropertyType.cs" />
     <Compile Include="Enums\SkypeChatMessageStatus.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using eigenein.SkypeNinja.Core.Enums;
 
 namespace eigenein.SkypeNinja.Core.Exceptions
 {
@@ -9,11 +10,23 @@ namespace eigenein.SkypeNinja.Core.Exceptions
     [Serializable]
     public class MessageSkippedException : Exception
     {
-        public MessageSkippedException(string message)
+        private readonly MessageSkipReason reason;
+
+        public MessageSkippedException(string message, MessageSkipReason reason)
             : base(message)
         {
-            // Do nothing.
-            // TODO: introduce skip reason and grouping by the reason.
+            this.reason = reason;
+        }
+
+        /// <summary>
+        /// Gets the message skip reason.
+        /// </summary>
+        public MessageSkipReason Reason
+        {
+            get
+            {
+                return reason;
+            }
         }
     }
 }

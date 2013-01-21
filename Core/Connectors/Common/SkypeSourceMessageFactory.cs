@@ -42,7 +42,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
                 return readMessage(reader);
             }
 
-            throw new MessageSkippedException("Unknown message type.");
+            throw new MessageSkippedException(
+                "Unknown message type.",
+                MessageSkipReason.SkypeUnknownMessageType);
         }
 
         private static IMessage CreateSaidMessage(SQLiteDataReader reader)
