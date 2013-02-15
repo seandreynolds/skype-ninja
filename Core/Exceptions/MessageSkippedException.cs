@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using eigenein.SkypeNinja.Core.Enums;
 
 namespace eigenein.SkypeNinja.Core.Exceptions
@@ -27,6 +28,14 @@ namespace eigenein.SkypeNinja.Core.Exceptions
             {
                 return reason;
             }
+        }
+
+        public override void GetObjectData(
+            SerializationInfo info,
+            StreamingContext context)
+        {
+            base.GetObjectData(info, context);
+            info.AddValue("Reason", reason);
         }
     }
 }
