@@ -16,16 +16,11 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
 
         public override void Open()
         {
-            Console.WriteLine(
-                "Opened {0}", 
-                Uri);
+            // Do nothing.
         }
 
         public override void Close()
         {
-            Console.WriteLine(
-                "Closed {0}",
-                Uri);
             Console.Out.Flush();
         }
 

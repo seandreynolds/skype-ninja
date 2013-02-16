@@ -82,6 +82,8 @@
     <Compile Include="Connectors\Common\Collections\FilterCollection.cs" />
     <Compile Include="Enums\SkypeMessageType.cs" />
     <Compile Include="Exceptions\MessageSkippedException.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="Helpers\QueryParameters.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
     <Compile Include="Interfaces\ICopier.cs" />

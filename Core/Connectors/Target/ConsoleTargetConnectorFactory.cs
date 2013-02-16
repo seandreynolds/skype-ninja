@@ -9,6 +9,10 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
 
         public ITargetConnector CreateConnector(Uri uri)
         {
+            if (!String.IsNullOrEmpty(uri.LocalPath))
+            {
+                throw new ArgumentException("The connector has no parameters.");
+            }
             return new ConsoleTargetConnector(uri);
         }
 
