@@ -6,7 +6,7 @@
               params:Manager.Theme="Light"
               params:Manager.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
               params:Manager.ContrastBrush="White"
-              Title="Skype Ninja" Height="350" Width="525"
+              Title="Sky Ninja" Height="350" Width="525"
               WindowStartupLocation="CenterScreen"
               ResizeMode="CanMinimize">
     <Grid>

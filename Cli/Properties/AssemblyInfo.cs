@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Skype Ninja Command Line Interface")]
+[assembly: AssemblyTitle("Sky Ninja Command Line Interface")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Skype Ninja")]
-[assembly: AssemblyCopyright("Pavel Perestoronin © 2012")]
+[assembly: AssemblyProduct("Sky Ninja")]
+[assembly: AssemblyCopyright("Pavel Perestoronin © 2012-2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
