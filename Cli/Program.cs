@@ -20,13 +20,14 @@ namespace eigenein.SkypeNinja.Cli
             Options options = new Options();
             CommandLineParser parser = new CommandLineParser(
                 new CommandLineParserSettings(Console.Error));
-            if (!parser.ParseArguments(args, options))
+            if (parser.ParseArguments(args, options))
             {
-                Logger.Fatal("Invalid options.");
+                Main2(options);
+            }
+            else
+            {
                 Environment.Exit(ExitCode.InvalidOptions);
             }
-
-            Main2(options);
         }
 
         private static void Main2(Options options)

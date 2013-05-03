@@ -31,7 +31,10 @@ namespace eigenein.SkypeNinja.Cli.Common
             set;
         }
 
-        [HelpOption]
+        [HelpOption(
+            "h", 
+            "help", 
+            HelpText="Show the help and exit.")]
         public string GetUsage()
         {
             return HelpText.AutoBuild(
