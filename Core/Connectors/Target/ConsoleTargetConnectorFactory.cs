@@ -11,7 +11,8 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target
         {
             if (!String.IsNullOrEmpty(uri.LocalPath))
             {
-                throw new ArgumentException("The connector has no parameters.");
+                throw new ArgumentException(String.Format(
+                    "The connector has no parameters but found: {0}.", uri.LocalPath));
             }
             return new ConsoleTargetConnector(uri);
         }

@@ -12,7 +12,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
         private static readonly Dictionary<string, ISourceConnectorFactory> SourceFactoryCache =
             new Dictionary<string, ISourceConnectorFactory>()
                 {
-                    {ConnectorUriScheme.Skype, new SkypeSourceConnectorFactory()}
+                    {ConnectorUriScheme.SkypeDb, new SkypeDbSourceConnectorFactory()}
                 };
 
         private static readonly Dictionary<string, ITargetConnectorFactory> TargetFactoryCache =

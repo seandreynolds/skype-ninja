@@ -62,7 +62,7 @@
     <Compile Include="Connectors\Connector.cs" />
     <Compile Include="Connectors\SourceConnector.cs" />
     <Compile Include="Connectors\Source\SkypeSourceConnector.cs" />
-    <Compile Include="Connectors\Source\SkypeSourceConnectorFactory.cs" />
+    <Compile Include="Connectors\Source\SkypeDbSourceConnectorFactory.cs" />
     <Compile Include="Connectors\Source\SkypeSourceMessageEnumerator.cs" />
     <Compile Include="Connectors\TargetConnector.cs" />
     <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
