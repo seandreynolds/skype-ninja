@@ -1,4 +1,5 @@
 ﻿using System;
+
 using CommandLine;
 using CommandLine.Text;
 
@@ -7,10 +8,10 @@ namespace eigenein.SkypeNinja.Cli.Common
     /// <summary>
     /// Represents the application options.
     /// </summary>
-    internal class Options : CommandLineOptionsBase
+    internal class Options
     {
         [Option(
-            "s", 
+            's', 
             "source-uri", 
             HelpText="Source storage URI",
             Required=true)]
@@ -21,7 +22,7 @@ namespace eigenein.SkypeNinja.Cli.Common
         }
 
         [Option(
-            "t", 
+            't', 
             "target-uri", 
             HelpText="Target storage URI",
             Required=true)]
@@ -32,7 +33,7 @@ namespace eigenein.SkypeNinja.Cli.Common
         }
 
         [HelpOption(
-            "h", 
+            'h', 
             "help", 
             HelpText="Show the help and exit.")]
         public string GetUsage()

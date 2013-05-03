@@ -8,9 +8,9 @@ namespace eigenein.SkypeNinja.Cli.Common
     internal static class ExitCode
     {
         /// <summary>
-        /// Invalid command-line options specified.
+        /// Possibly invalid command-line options specified.
         /// </summary>
-        public const int InvalidOptions = 1;
+        public const int CheckOptions = 1;
 
         /// <summary>
         /// Invalid URI format.

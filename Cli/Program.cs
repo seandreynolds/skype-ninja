@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CommandLine;
 using NLog;
 using eigenein.SkypeNinja.Cli.Common;
 using eigenein.SkypeNinja.Core.Connectors;
@@ -18,15 +17,15 @@ namespace eigenein.SkypeNinja.Cli
         public static void Main(string[] args)
         {
             Options options = new Options();
-            CommandLineParser parser = new CommandLineParser(
-                new CommandLineParserSettings(Console.Error));
-            if (parser.ParseArguments(args, options))
+            CommandLine.Parser commandLineParser = new CommandLine.Parser(
+                settings => settings.HelpWriter = Console.Error);
+            if (commandLineParser.ParseArguments(args, options))
             {
                 Main2(options);
             }
             else
             {
-                Environment.Exit(ExitCode.InvalidOptions);
+                Environment.Exit(ExitCode.CheckOptions);
             }
         }
 
