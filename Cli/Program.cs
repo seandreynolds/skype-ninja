@@ -129,7 +129,7 @@ namespace eigenein.SkypeNinja.Cli
                 }
                 catch (Exception ex)
                 {
-                    Logger.ErrorException("Could not migrate the message.", ex);
+                    Logger.ErrorException("Could not copy the message.", ex);
                 }
 
                 if (!messageCollectionEndPassed)
