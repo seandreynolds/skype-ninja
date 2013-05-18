@@ -60,9 +60,9 @@
     <AssemblyOriginatorKeyFile>..\SkypeNinja.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elysium, Version=2.0.976.0, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL">
+    <Reference Include="Elysium, Version=2.0.976.1, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Elysium.Theme.2.0\lib\net40-client\Elysium.dll</HintPath>
+      <HintPath>..\packages\Elysium.Theme.2.0.1\lib\net40-client\Elysium.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
