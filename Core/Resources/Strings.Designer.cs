@@ -61,7 +61,7 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to skypedb://path/to/main.db.
+        ///   Looks up a localized string similar to Skype database in the following format: skypedb://path/to/main.db.
         /// </summary>
         internal static string Core_Connectors_Source_SkypeDbSourceConnectorFactory_Help {
             get {

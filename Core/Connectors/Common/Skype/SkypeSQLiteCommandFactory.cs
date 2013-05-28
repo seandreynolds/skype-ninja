@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Data.SQLite;
+
 using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 using eigenein.SkypeNinja.Core.Enums;
 
-namespace eigenein.SkypeNinja.Core.Connectors.Common
+namespace eigenein.SkypeNinja.Core.Connectors.Common.Skype
 {
     internal class SkypeSQLiteCommandFactory
     {

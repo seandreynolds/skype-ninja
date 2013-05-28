@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Data.SQLite;
-using eigenein.SkypeNinja.Core.Connectors.Common;
+
 using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
+using eigenein.SkypeNinja.Core.Connectors.Common.Skype;
 using eigenein.SkypeNinja.Core.Interfaces;
 
-namespace eigenein.SkypeNinja.Core.Connectors.Source
+namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
 {
     internal class SkypeSourceConnector : SourceConnector
     {

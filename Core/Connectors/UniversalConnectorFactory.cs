@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using eigenein.SkypeNinja.Core.Connectors.Source;
+using eigenein.SkypeNinja.Core.Connectors.Source.Skype;
 using eigenein.SkypeNinja.Core.Connectors.Target;
 using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Interfaces;

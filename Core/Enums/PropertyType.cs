@@ -1,5 +1,6 @@
 ﻿using System;
 using eigenein.SkypeNinja.Core.Common.Attributes;
+using eigenein.SkypeNinja.Core.Connectors.Common;
 
 namespace eigenein.SkypeNinja.Core.Enums
 {
@@ -18,6 +19,12 @@ namespace eigenein.SkypeNinja.Core.Enums
         /// Message body.
         /// </summary>
         [FieldValueType(typeof(string))]
-        Body
+        Body,
+
+        /// <summary>
+        /// Message path after grouping.
+        /// </summary>
+        [FieldValueType(typeof(MessagePath))]
+        Path
     }
 }
