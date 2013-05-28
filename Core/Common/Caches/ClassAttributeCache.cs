@@ -7,34 +7,33 @@ namespace eigenein.SkypeNinja.Core.Common.Caches
     /// <summary>
     /// Used to retrieve the attributes.
     /// </summary>
-    internal static class ClassAttributeCache<TClass, TAttribute>
+    public static class ClassAttributeCache<TAttribute>
         where TAttribute : Attribute
     {
-        private static readonly IList<TAttribute> Attributes;
+        private static readonly IDictionary<Type, IList<TAttribute>> Cache = 
+            new Dictionary<Type, IList<TAttribute>>();
 
-        static ClassAttributeCache()
+        public static TAttribute GetAttribute(Type type)
         {
-            // Preload the attributes.
-            Attributes = typeof(TClass).GetCustomAttributes(
-                typeof(TAttribute),
-                false)
-                .Cast<TAttribute>()
-                .ToList();
+            return GetAttributes(type).First();
         }
 
         /// <summary>
-        /// Gets the attribute instance.
+        /// Gets the class attributes.
         /// </summary>
-        public static TAttribute GetAttribute()
+        public static IList<TAttribute> GetAttributes(Type type)
         {
-            if (Attributes.Count == 1)
+            IList<TAttribute> attributes;
+            if (!Cache.TryGetValue(type, out attributes))
             {
-                return Attributes.First();
+                attributes = type.GetCustomAttributes(
+                    typeof(TAttribute),
+                    false)
+                    .Cast<TAttribute>()
+                    .ToList();
+                Cache[type] = attributes;
             }
-            throw new InvalidOperationException(String.Format(
-                "Type {0} contains {1} attribute(s).",
-                typeof(TClass),
-                Attributes.Count));
+            return attributes;
         }
     }
 }

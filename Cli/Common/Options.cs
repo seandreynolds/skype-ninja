@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using CommandLine;
 using CommandLine.Text;
+
+using eigenein.SkypeNinja.Core.Common;
+using eigenein.SkypeNinja.Core.Common.Attributes;
+using eigenein.SkypeNinja.Core.Common.Caches;
+using eigenein.SkypeNinja.Core.Connectors;
+using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Cli.Common
 {
@@ -32,24 +39,36 @@ namespace eigenein.SkypeNinja.Cli.Common
             set;
         }
 
-        [Option(
-            "list-schemes",
-            HelpText = "List source and target schemes and exit.")]
-        public bool ListSchemes
-        {
-            get;
-            set;
-        }
-
         [HelpOption(
             'h', 
             "help", 
             HelpText="Show the help and exit.")]
         public string GetUsage()
         {
-            return HelpText.AutoBuild(
+            // Build the standard help text.
+            HelpText helpText = HelpText.AutoBuild(
                 this, 
                 current => HelpText.DefaultParsingErrorsHandler(this, current));
+            // Add the schemes help.
+            helpText.AddPostOptionsLine("Available source schemes:");
+            AddSchemesHelp(helpText, UniversalConnectorFactory.SourceConnectorFactories);
+            helpText.AddPostOptionsLine("Available target schemes:");
+            AddSchemesHelp(helpText, UniversalConnectorFactory.TargetConnectorFactories);
+            // Done.
+            helpText.AddPostOptionsLine(String.Empty);
+            return helpText;
+        }
+
+        private void AddSchemesHelp(
+            HelpText helpText,
+            IEnumerable<IConnectorFactory> factories)
+        {
+            foreach (IConnectorFactory factory in factories)
+            {
+                ConnectorFactoryAttribute attribute =
+                    ClassAttributeCache<ConnectorFactoryAttribute>.GetAttribute(factory.GetType());
+                helpText.AddPostOptionsLine(String.Format("  {0}", Translator.GetString(attribute.Help)));
+            }
         }
     }
 }

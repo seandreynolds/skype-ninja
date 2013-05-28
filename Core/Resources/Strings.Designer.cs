@@ -61,7 +61,7 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lorem Ipsum..
+        ///   Looks up a localized string similar to skypedb://path/to/main.db.
         /// </summary>
         internal static string Core_Connectors_Source_SkypeDbSourceConnectorFactory_Help {
             get {
@@ -70,7 +70,7 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lorem Ipsum..
+        ///   Looks up a localized string similar to console:.
         /// </summary>
         internal static string Core_Connectors_Target_ConsoleTargetConnectorFactory_Help {
             get {

@@ -5,7 +5,7 @@ using eigenein.SkypeNinja.Core.Resources;
 
 namespace eigenein.SkypeNinja.Core.Common
 {
-    internal static class Translator
+    public static class Translator
     {
         private static readonly ResourceManager ResourceManager =
             new ResourceManager(typeof(Strings));

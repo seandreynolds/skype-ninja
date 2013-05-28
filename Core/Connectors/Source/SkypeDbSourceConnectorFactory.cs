@@ -1,6 +1,6 @@
 ﻿using System;
 
-using eigenein.SkypeNinja.Core.Attributes;
+using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source

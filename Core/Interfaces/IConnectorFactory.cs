@@ -2,7 +2,7 @@
 
 namespace eigenein.SkypeNinja.Core.Interfaces
 {
-    internal interface IConnectorFactory
+    public interface IConnectorFactory
     {
         // Nothing.
     }

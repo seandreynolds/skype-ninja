@@ -30,6 +30,22 @@ namespace eigenein.SkypeNinja.Core.Connectors
                     {ConnectorUriScheme.Console, new ConsoleTargetConnectorFactory()}
                 };
 
+        public static IEnumerable<ISourceConnectorFactory> SourceConnectorFactories
+        {
+            get
+            {
+                return SourceFactoryCache.Values;
+            }
+        }
+
+        public static IEnumerable<ITargetConnectorFactory> TargetConnectorFactories
+        {
+            get
+            {
+                return TargetFactoryCache.Values;
+            }
+        }
+
         /// <summary>
         /// Creates the source connector by the specified URI.
         /// </summary>

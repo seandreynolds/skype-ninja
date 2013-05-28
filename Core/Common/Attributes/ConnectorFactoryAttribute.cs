@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace eigenein.SkypeNinja.Core.Attributes
+namespace eigenein.SkypeNinja.Core.Common.Attributes
 {
     /// <summary>
     /// Describes the connector.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    internal class ConnectorFactoryAttribute : Attribute
+    public class ConnectorFactoryAttribute : Attribute
     {
         public ConnectorFactoryAttribute(string help)
         {

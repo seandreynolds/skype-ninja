@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ConnectorFactoryAttribute.cs" />
+    <Compile Include="Common\Attributes\ConnectorFactoryAttribute.cs" />
     <Compile Include="Common\Caches\ClassAttributeCache.cs" />
     <Compile Include="Common\Attributes\FieldValueTypeAttribute.cs" />
     <Compile Include="Common\Statistics.cs" />
