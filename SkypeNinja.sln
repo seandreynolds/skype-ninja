@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototypes.Ui.ElysiumUi", "Prototypes.Ui.ElysiumUi\Prototypes.Ui.ElysiumUi.csproj", "{08EF3C5D-59AA-402C-BBCD-D4A1C6393D5A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A8F44C22-E8E4-491C-9B00-13E227E9A415}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Cli\Cli.csproj", "{EF13B264-171A-42AE-B39D-E016D10BF7BD}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{08EF3C5D-59AA-402C-BBCD-D4A1C6393D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08EF3C5D-59AA-402C-BBCD-D4A1C6393D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08EF3C5D-59AA-402C-BBCD-D4A1C6393D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08EF3C5D-59AA-402C-BBCD-D4A1C6393D5A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A8F44C22-E8E4-491C-9B00-13E227E9A415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8F44C22-E8E4-491C-9B00-13E227E9A415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8F44C22-E8E4-491C-9B00-13E227E9A415}.Release|Any CPU.ActiveCfg = Release|Any CPU
