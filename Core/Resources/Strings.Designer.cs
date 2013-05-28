@@ -63,18 +63,9 @@ namespace eigenein.SkypeNinja.Core.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Skype database in the following format: skypedb://path/to/main.db.
         /// </summary>
-        internal static string Core_Connectors_Source_SkypeDbSourceConnectorFactory_Help {
+        internal static string Core_Connectors_Source_Skype_SkypeDbSourceConnectorFactory_Help {
             get {
-                return ResourceManager.GetString("Core.Connectors.Source.SkypeDbSourceConnectorFactory.Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to console:.
-        /// </summary>
-        internal static string Core_Connectors_Target_ConsoleTargetConnectorFactory_Help {
-            get {
-                return ResourceManager.GetString("Core.Connectors.Target.ConsoleTargetConnectorFactory.Help", resourceCulture);
+                return ResourceManager.GetString("Core.Connectors.Source.Skype.SkypeDbSourceConnectorFactory.Help", resourceCulture);
             }
         }
     }

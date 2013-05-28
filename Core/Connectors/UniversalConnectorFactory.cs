@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using eigenein.SkypeNinja.Core.Connectors.Source;
+
 using eigenein.SkypeNinja.Core.Connectors.Source.Skype;
-using eigenein.SkypeNinja.Core.Connectors.Target;
 using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -28,7 +27,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
         private static readonly Dictionary<string, ITargetConnectorFactory> TargetFactoryCache =
             new Dictionary<string, ITargetConnectorFactory>()
                 {
-                    {ConnectorUriScheme.Console, new ConsoleTargetConnectorFactory()}
+                    // TODO.
                 };
 
         public static IEnumerable<ISourceConnectorFactory> SourceConnectorFactories

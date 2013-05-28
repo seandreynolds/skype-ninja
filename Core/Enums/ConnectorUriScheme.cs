@@ -8,7 +8,5 @@ namespace eigenein.SkypeNinja.Core.Enums
         /// Skype database file.
         /// </summary>
         public const string SkypeDb = "skypedb";
-
-        public const string Console = "console";
     }
 }

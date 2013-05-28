@@ -5,7 +5,7 @@ using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
 {
-    [ConnectorFactory("Core.Connectors.Source.SkypeDbSourceConnectorFactory.Help")]
+    [ConnectorFactory("Core.Connectors.Source.Skype.SkypeDbSourceConnectorFactory.Help")]
     internal class SkypeDbSourceConnectorFactory : ISourceConnectorFactory
     {
         #region Implementation of ISourceConnectorFactory
