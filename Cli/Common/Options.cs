@@ -13,7 +13,7 @@ namespace eigenein.SkypeNinja.Cli.Common
         [Option(
             's', 
             "source-uri", 
-            HelpText="Source storage URI",
+            HelpText="Source storage URI.",
             Required=true)]
         public string SourceUriString
         {
@@ -24,9 +24,18 @@ namespace eigenein.SkypeNinja.Cli.Common
         [Option(
             't', 
             "target-uri", 
-            HelpText="Target storage URI",
+            HelpText="Target storage URI.",
             Required=true)]
         public string TargetUriString
+        {
+            get;
+            set;
+        }
+
+        [Option(
+            "list-schemes",
+            HelpText = "List source and target schemes and exit.")]
+        public bool ListSchemes
         {
             get;
             set;

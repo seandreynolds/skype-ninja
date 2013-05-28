@@ -1,13 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using eigenein.SkypeNinja.Core.Helpers;
 
-namespace eigenein.SkypeNinja.Core.Extensions
+using NLog;
+
+using eigenein.SkypeNinja.Core.Common.Helpers;
+
+namespace eigenein.SkypeNinja.Core.Common.Extensions
 {
-    internal static class UriExtensions
+    public static class UriExtensions
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
+        /// <summary>
+        /// Tries to parse the URI string.
+        /// </summary>
+        public static bool TryParse(string uriString, out Uri uri)
+        {
+            try
+            {
+                uri = new Uri(uriString);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorException("Error parsing the URI.", ex);
+                uri = null;
+                return false;
+            }
+        }
+
         /// <summary>
         /// Gets the query parameters. See http://codereview.stackexchange.com/a/1592/12904.
         /// </summary>

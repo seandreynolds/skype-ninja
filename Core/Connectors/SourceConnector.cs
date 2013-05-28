@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 using eigenein.SkypeNinja.Core.Interfaces;
 

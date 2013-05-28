@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
-using eigenein.SkypeNinja.Core.Extensions;
 
-namespace eigenein.SkypeNinja.Test.Core.Extensions
+using NUnit.Framework;
+
+using eigenein.SkypeNinja.Core.Common.Extensions;
+
+namespace eigenein.SkypeNinja.Test.Core.Common.Extensions
 {
     [TestFixture]
     internal class UriExtensionsTest

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using eigenein.SkypeNinja.Core.Common.Attributes;
-using eigenein.SkypeNinja.Core.Common.Helpers;
+using eigenein.SkypeNinja.Core.Common.Caches;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Common.Collections
 {
@@ -21,20 +22,19 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common.Collections
         {
             FieldValueTypeAttribute attribute;
             if (FieldAttributeCache<TItemType, FieldValueTypeAttribute>.TryGetAttribute(
-                itemType.ToString(), out attribute))
+                itemType.ToString(), 
+                out attribute))
             {
                 attribute.Validate(item);
             }
 
-            lock (items)
+            List<TItem> subList;
+            if (!items.TryGetValue(itemType, out subList))
             {
-                List<TItem> subList;
-                if (!items.TryGetValue(itemType, out subList))
-                {
-                    subList = new List<TItem> {item};
-                    items.Add(itemType, subList);
-                }
+                subList = new List<TItem> {item};
+                items.Add(itemType, subList);
             }
+            subList.Add(item);
         }
 
         public bool TryGetItem(TItemType itemType, out TItem item)

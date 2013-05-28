@@ -1,8 +1,11 @@
 ﻿using System;
+
+using eigenein.SkypeNinja.Core.Attributes;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source
 {
+    [ConnectorFactory("Core.Connectors.Source.SkypeDbSourceConnectorFactory.Help")]
     internal class SkypeDbSourceConnectorFactory : ISourceConnectorFactory
     {
         #region Implementation of ISourceConnectorFactory

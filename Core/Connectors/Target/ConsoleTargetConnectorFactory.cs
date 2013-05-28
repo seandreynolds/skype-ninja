@@ -1,8 +1,11 @@
 ﻿using System;
+
+using eigenein.SkypeNinja.Core.Attributes;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Target
 {
+    [ConnectorFactory("Core.Connectors.Target.ConsoleTargetConnectorFactory.Help")]
     internal class ConsoleTargetConnectorFactory : ITargetConnectorFactory
     {
         #region Implementation of ITargetConnectorFactory

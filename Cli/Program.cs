@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using NLog;
 using eigenein.SkypeNinja.Cli.Common;
+using eigenein.SkypeNinja.Core.Common;
+using eigenein.SkypeNinja.Core.Common.Extensions;
 using eigenein.SkypeNinja.Core.Connectors;
 using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
 using eigenein.SkypeNinja.Core.Copying;
+using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Exceptions;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -14,6 +17,9 @@ namespace eigenein.SkypeNinja.Cli
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
+        /// <summary>
+        /// Entry point wrapper. Parses the arguments.
+        /// </summary>
         public static void Main(string[] args)
         {
             Options options = new Options();
@@ -29,11 +35,14 @@ namespace eigenein.SkypeNinja.Cli
             }
         }
 
+        /// <summary>
+        /// Actual entry point.
+        /// </summary>
         private static void Main2(Options options)
         {
             Uri sourceUri;
 
-            if (!TryParseUri(options.SourceUriString, out sourceUri))
+            if (!UriExtensions.TryParse(options.SourceUriString, out sourceUri))
             {
                 Logger.Fatal("Could not parse source URI.");
                 Environment.Exit(ExitCode.InvalidUri);
@@ -41,7 +50,7 @@ namespace eigenein.SkypeNinja.Cli
 
             Uri targetUri;
 
-            if (!TryParseUri(options.TargetUriString, out targetUri))
+            if (!UriExtensions.TryParse(options.TargetUriString, out targetUri))
             {
                 Logger.Fatal("Could not parse target URI.");
                 Environment.Exit(ExitCode.InvalidUri);
@@ -99,6 +108,9 @@ namespace eigenein.SkypeNinja.Cli
             }
         }
 
+        /// <summary>
+        /// Performs copying of messages.
+        /// </summary>
         private static void CopyMessages(
             ISourceConnector sourceConnector,
             FilterCollection filters,
@@ -109,9 +121,7 @@ namespace eigenein.SkypeNinja.Cli
                 filters,
                 targetConnector);
 
-            int messageCount = 0;
-            int messageCopiedCount = 0;
-            int messageSkippedCount = 0;
+            Statistics statistics = new Statistics();
 
             while (true)
             {
@@ -125,7 +135,7 @@ namespace eigenein.SkypeNinja.Cli
                 }
                 catch (MessageSkippedException)
                 {
-                    messageSkippedCount += 1;
+                    statistics[StatisticsType.Skipped] += 1;
                 }
                 catch (Exception ex)
                 {
@@ -134,14 +144,17 @@ namespace eigenein.SkypeNinja.Cli
 
                 if (!messageCollectionEndPassed)
                 {
-                    messageCount += 1;
+                    statistics[StatisticsType.Total] += 1;
                     if (messageCopied)
                     {
-                        messageCopiedCount += 1;
+                        statistics[StatisticsType.Copied] += 1;
                     }
-                    if (messageCount % 100 == 0)
+                    int totalCount = statistics[StatisticsType.Total];
+                    if (totalCount % 100 == 0)
                     {
-                        Logger.Info("{0} of {1} messages copied.", messageCopiedCount, messageCount);
+                        Logger.Info("{0} of {1} messages copied.", 
+                            statistics[StatisticsType.Copied], 
+                            totalCount);
                     }
                 }
                 else
@@ -151,26 +164,9 @@ namespace eigenein.SkypeNinja.Cli
             }
 
             Logger.Info("Copying has been finished.");
-            Logger.Info("{0} messages copied.", messageCopiedCount);
-            Logger.Info("{0} messages skipped.", messageSkippedCount);
-            Logger.Info("{0} messages failed.", messageCount - messageCopiedCount - messageSkippedCount);
-        }
-
-        /// <summary>
-        /// Tries to parse the URI.
-        /// </summary>
-        private static bool TryParseUri(string uriString, out Uri uri)
-        {
-            try
+            foreach (KeyValuePair<StatisticsType, int> statisticsItem in statistics)
             {
-                uri = new Uri(uriString);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorException("Error parsing the URI.", ex);
-                uri = null;
-                return false;
+                Logger.Info("{0}: {1}.", statisticsItem.Key, statisticsItem.Value);
             }
         }
 

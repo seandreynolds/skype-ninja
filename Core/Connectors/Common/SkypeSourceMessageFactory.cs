@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using eigenein.SkypeNinja.Core.Common.Helpers;
+
+using eigenein.SkypeNinja.Core.Common.Extensions;
 using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Exceptions;
 using eigenein.SkypeNinja.Core.Interfaces;
@@ -10,6 +11,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
 {
     internal static class SkypeSourceMessageFactory
     {
+        /// <summary>
+        /// Reads the message from the data reader.
+        /// </summary>
         private delegate IMessage ReadMessageFunc(SQLiteDataReader reader);
 
         private static readonly Dictionary<SkypeMessageType, ReadMessageFunc> FactoryByMessageType =

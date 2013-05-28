@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace eigenein.SkypeNinja.Core.Common.Helpers
+namespace eigenein.SkypeNinja.Core.Common.Extensions
 {
     /// <summary>
     /// <see cref="IDataReader"/> extensions that allow to read values by

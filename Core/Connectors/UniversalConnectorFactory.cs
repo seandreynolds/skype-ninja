@@ -7,20 +7,32 @@ using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors
 {
+    /// <summary>
+    /// Used to create a connector instance by the URI.
+    /// </summary>
     public static class UniversalConnectorFactory
     {
+        /// <summary>
+        /// Maps the source URI scheme to the source connector factory.
+        /// </summary>
         private static readonly Dictionary<string, ISourceConnectorFactory> SourceFactoryCache =
             new Dictionary<string, ISourceConnectorFactory>()
                 {
                     {ConnectorUriScheme.SkypeDb, new SkypeDbSourceConnectorFactory()}
                 };
 
+        /// <summary>
+        /// Maps the target URI scheme to the target connector factory.
+        /// </summary>
         private static readonly Dictionary<string, ITargetConnectorFactory> TargetFactoryCache =
             new Dictionary<string, ITargetConnectorFactory>()
                 {
                     {ConnectorUriScheme.Console, new ConsoleTargetConnectorFactory()}
                 };
 
+        /// <summary>
+        /// Creates the source connector by the specified URI.
+        /// </summary>
         public static ISourceConnector CreateSourceConnector(Uri uri)
         {
             ISourceConnectorFactory factory;
@@ -32,6 +44,9 @@ namespace eigenein.SkypeNinja.Core.Connectors
             return factory.CreateConnector(uri);
         }
 
+        /// <summary>
+        /// Creates the target connector by the specified URI.
+        /// </summary>
         public static ITargetConnector CreateTargetConnector(Uri uri)
         {
             ITargetConnectorFactory factory;
