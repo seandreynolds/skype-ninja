@@ -125,41 +125,32 @@ namespace eigenein.SkypeNinja.Cli
 
             while (true)
             {
-                bool messageCollectionEndPassed = false;
-                bool messageCopied = false;
-                
                 try
                 {
-                    messageCollectionEndPassed = !copier.CopyNextMessage();
-                    messageCopied = true;
+                    if (!copier.CopyNextMessage())
+                    {
+                        break;
+                    }
+                    // Update the statistics.
+                    statistics[StatisticsType.Total] += 1;
+                    statistics[StatisticsType.Copied] += 1;
+                    // Print the statistics.
+                    int totalCount = statistics[StatisticsType.Total];
+                    if (totalCount % 100 == 0)
+                    {
+                        Logger.Info("{0} of {1} messages copied.",
+                            statistics[StatisticsType.Copied],
+                            totalCount);
+                    }
                 }
                 catch (MessageSkippedException)
                 {
+                    statistics[StatisticsType.Total] += 1;
                     statistics[StatisticsType.Skipped] += 1;
                 }
                 catch (Exception ex)
                 {
                     Logger.ErrorException("Could not copy the message.", ex);
-                }
-
-                if (!messageCollectionEndPassed)
-                {
-                    statistics[StatisticsType.Total] += 1;
-                    if (messageCopied)
-                    {
-                        statistics[StatisticsType.Copied] += 1;
-                    }
-                    int totalCount = statistics[StatisticsType.Total];
-                    if (totalCount % 100 == 0)
-                    {
-                        Logger.Info("{0} of {1} messages copied.", 
-                            statistics[StatisticsType.Copied], 
-                            totalCount);
-                    }
-                }
-                else
-                {
-                    break;
                 }
             }
 

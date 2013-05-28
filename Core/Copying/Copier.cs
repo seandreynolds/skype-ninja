@@ -20,10 +20,6 @@ namespace eigenein.SkypeNinja.Core.Copying
         /// <summary>
         /// Copies the next message.
         /// </summary>
-        /// <returns>
-        /// <c>true</c> if the copier has successfully copied the next message;
-        /// <c>false</c> if the underlying message enumerator has passed the end of the message collection.
-        /// </returns>
         public bool CopyNextMessage()
         {
             if (!MessageEnumerator.MoveNext())
@@ -31,7 +27,8 @@ namespace eigenein.SkypeNinja.Core.Copying
                 return false;
             }
 
-            TargetConnector.InsertMessage(MessageEnumerator.Current);
+            IMessage convertedMessage = ConvertMessage(MessageEnumerator.Current);
+            TargetConnector.InsertMessage(convertedMessage);
             return true;
         }
 
