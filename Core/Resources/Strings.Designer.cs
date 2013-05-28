@@ -61,11 +61,20 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skype database in the following format: skypedb://path/to/main.db.
+        ///   Looks up a localized string similar to skypedb://path/to/main.db.
         /// </summary>
         internal static string Core_Connectors_Source_Skype_SkypeDbSourceConnectorFactory_Help {
             get {
                 return ResourceManager.GetString("Core.Connectors.Source.Skype.SkypeDbSourceConnectorFactory.Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to file://path?format=json|plain|xml|csv&amp;store=simple|zip.
+        /// </summary>
+        internal static string Core_Connectors_Target_Files_FilesTargetConnectorFactory_Help {
+            get {
+                return ResourceManager.GetString("Core.Connectors.Target.Files.FilesTargetConnectorFactory.Help", resourceCulture);
             }
         }
     }

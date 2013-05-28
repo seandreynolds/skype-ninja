@@ -86,8 +86,7 @@
     <Compile Include="Connectors\Source\Skype\SkypeDbSourceConnectorFactory.cs" />
     <Compile Include="Connectors\Source\Skype\SkypeSourceMessageEnumerator.cs" />
     <Compile Include="Connectors\TargetConnector.cs" />
-    <Compile Include="Connectors\Target\ConsoleTargetConnector.cs" />
-    <Compile Include="Connectors\Target\ConsoleTargetConnectorFactory.cs" />
+    <Compile Include="Connectors\Target\Files\FilesTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Copying\Copier.cs" />
     <Compile Include="Copying\CopierFactory.cs" />
@@ -131,8 +130,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +142,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
