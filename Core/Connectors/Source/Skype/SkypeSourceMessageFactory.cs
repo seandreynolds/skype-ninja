@@ -57,6 +57,8 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
             IMessage message = new Message(MessageType.Said);
 
             message.Properties.Add(PropertyType.Body, reader.GetString("body"));
+            message.Properties.Add(PropertyType.Author, reader.GetString("author"));
+            message.Properties.Add(PropertyType.Timestamp, reader.GetDateTime("timestamp"));
 
             return message;
         }

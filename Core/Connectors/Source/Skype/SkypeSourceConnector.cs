@@ -11,21 +11,12 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
     {
         private readonly SQLiteConnection connection;
 
-        public SkypeSourceConnector(Uri uri)
-            : base(uri)
+        public SkypeSourceConnector(SQLiteConnection connection)
         {
-            string connectionString = String.Format(
-                "Data Source={0};Read Only=True",
-                uri.LocalPath);
-            connection = new SQLiteConnection(connectionString);
+            this.connection = connection;
         }
 
         #region Overrides of Connector
-
-        public override void Open()
-        {
-            connection.Open();
-        }
 
         public override void Close()
         {

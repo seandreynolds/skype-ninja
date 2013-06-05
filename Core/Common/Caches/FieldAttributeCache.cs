@@ -54,7 +54,7 @@ namespace eigenein.SkypeNinja.Core.Common.Caches
                         .GetCustomAttributes(typeof(TAttribute), false)
                         .Cast<TAttribute>()
                         .ToList();
-                    Cache.Add(fieldName, attributes);
+                    Cache[fieldName] = attributes;
                 }
 
                 return attributes;

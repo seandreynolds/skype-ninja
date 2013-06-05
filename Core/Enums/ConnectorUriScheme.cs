@@ -10,8 +10,8 @@ namespace eigenein.SkypeNinja.Core.Enums
         public const string SkypeDb = "skypedb";
 
         /// <summary>
-        /// Usual files.
+        /// JSON file.
         /// </summary>
-        public const string File = "file";
+        public const string Json = "json";
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using eigenein.SkypeNinja.Core.Connectors.Source.Skype;
-using eigenein.SkypeNinja.Core.Connectors.Target.Files;
+using eigenein.SkypeNinja.Core.Connectors.Target.Json;
 using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -28,7 +28,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
         private static readonly Dictionary<string, ITargetConnectorFactory> TargetFactoryCache =
             new Dictionary<string, ITargetConnectorFactory>()
                 {
-                    {ConnectorUriScheme.File, new FilesTargetConnectorFactory()}
+                    {ConnectorUriScheme.Json, new JsonTargetConnectorFactory()}
                 };
 
         public static IEnumerable<ISourceConnectorFactory> SourceConnectorFactories

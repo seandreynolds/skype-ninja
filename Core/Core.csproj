@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net40\CommandLine.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NLog, Version=2.0.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NLog.2.0.1.2\lib\net40\NLog.dll</HintPath>
@@ -86,11 +89,10 @@
     <Compile Include="Connectors\Source\Skype\SkypeDbSourceConnectorFactory.cs" />
     <Compile Include="Connectors\Source\Skype\SkypeSourceMessageEnumerator.cs" />
     <Compile Include="Connectors\TargetConnector.cs" />
-    <Compile Include="Connectors\Target\Files\FilesTargetConnectorFactory.cs" />
+    <Compile Include="Connectors\Target\Json\JsonTargetConnector.cs" />
+    <Compile Include="Connectors\Target\Json\JsonTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Copying\Copier.cs" />
-    <Compile Include="Copying\CopierFactory.cs" />
-    <Compile Include="Copying\UniversalCopier.cs" />
     <Compile Include="Enums\FilterType.cs" />
     <Compile Include="Enums\MessageSkipReason.cs" />
     <Compile Include="Enums\MessageType.cs" />
@@ -107,7 +109,6 @@
     <Compile Include="Common\Helpers\QueryParameters.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
-    <Compile Include="Interfaces\ICopier.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\IMessageEnumerator.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />

@@ -70,11 +70,11 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to file://path?format=json|plain|xml|csv&amp;store=simple|zip.
+        ///   Looks up a localized string similar to json://path/to/log.json.
         /// </summary>
-        internal static string Core_Connectors_Target_Files_FilesTargetConnectorFactory_Help {
+        internal static string Core_Connectors_Target_Json_JsonTargetConnectorFactory_Help {
             get {
-                return ResourceManager.GetString("Core.Connectors.Target.Files.FilesTargetConnectorFactory.Help", resourceCulture);
+                return ResourceManager.GetString("Core.Connectors.Target.Json.JsonTargetConnectorFactory.Help", resourceCulture);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace eigenein.SkypeNinja.Core.Common.Caches
         /// <summary>
         /// Gets the class attributes.
         /// </summary>
-        public static IList<TAttribute> GetAttributes(Type type)
+        private static IEnumerable<TAttribute> GetAttributes(Type type)
         {
             IList<TAttribute> attributes;
             if (!Cache.TryGetValue(type, out attributes))

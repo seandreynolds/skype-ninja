@@ -5,23 +5,6 @@ namespace eigenein.SkypeNinja.Core.Connectors
 {
     internal abstract class Connector : IConnector
     {
-        private readonly Uri uri;
-
-        public Uri Uri
-        {
-            get
-            {
-                return uri;
-            }
-        }
-
-        protected Connector(Uri uri)
-        {
-            this.uri = uri;
-        }
-
-        public abstract void Open();
-
         public abstract void Close();
 
         #region Implementation of IDisposable

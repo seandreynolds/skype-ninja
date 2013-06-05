@@ -22,6 +22,12 @@ namespace eigenein.SkypeNinja.Core.Enums
         Body,
 
         /// <summary>
+        /// Message author.
+        /// </summary>
+        [FieldValueType(typeof(string))]
+        Author,
+
+        /// <summary>
         /// Message path after grouping.
         /// </summary>
         [FieldValueType(typeof(MessagePath))]

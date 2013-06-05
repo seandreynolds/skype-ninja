@@ -58,6 +58,7 @@ namespace eigenein.SkypeNinja.Cli
 
             ISourceConnector sourceConnector = null;
             ITargetConnector targetConnector = null;
+            Statistics statistics = null;
 
             try
             {
@@ -77,19 +78,9 @@ namespace eigenein.SkypeNinja.Cli
                     Logger.Fatal("Invalid target URI scheme.");
                     Environment.Exit(ExitCode.UnknownUriScheme);
                 }
-                if (!TryOpenConnector(sourceConnector))
-                {
-                    Logger.Fatal("Could not open source connector.");
-                    Environment.Exit(ExitCode.ConnectorOpenFailed);
-                }
-                if (!TryOpenConnector(targetConnector))
-                {
-                    Logger.Fatal("Could not open target connector.");
-                    Environment.Exit(ExitCode.ConnectorOpenFailed);
-                }
 
                 // TODO: filters.
-                CopyMessages(sourceConnector, null, targetConnector);
+                statistics = CopyMessages(sourceConnector, null, targetConnector);
             }
             catch (Exception ex)
             {
@@ -106,19 +97,28 @@ namespace eigenein.SkypeNinja.Cli
                     targetConnector.Dispose();
                 }
             }
+            // Finished.
+            Logger.Info("Copying has been finished.");
+            // Print the statistics.
+            if (statistics != null)
+            {
+                foreach (KeyValuePair<StatisticsType, int> statisticsItem in statistics)
+                {
+                    Logger.Info("{0}: {1}.", statisticsItem.Key, statisticsItem.Value);
+                }
+            }
         }
 
         /// <summary>
         /// Performs copying of messages.
         /// </summary>
-        private static void CopyMessages(
+        private static Statistics CopyMessages(
             ISourceConnector sourceConnector,
             FilterCollection filters,
             ITargetConnector targetConnector)
         {
-            ICopier copier = CopierFactory.CreateCopier(
-                sourceConnector, 
-                filters,
+            Copier copier = new Copier(
+                sourceConnector.QueryMessages(filters),
                 targetConnector);
 
             Statistics statistics = new Statistics();
@@ -154,11 +154,7 @@ namespace eigenein.SkypeNinja.Cli
                 }
             }
 
-            Logger.Info("Copying has been finished.");
-            foreach (KeyValuePair<StatisticsType, int> statisticsItem in statistics)
-            {
-                Logger.Info("{0}: {1}.", statisticsItem.Key, statisticsItem.Value);
-            }
+            return statistics;
         }
 
         /// <summary>
@@ -182,22 +178,10 @@ namespace eigenein.SkypeNinja.Cli
                 connector = default(TConnector);
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Tries to open the connector.
-        /// </summary>
-        private static bool TryOpenConnector(IConnector connector)
-        {
-            try
-            {
-                Logger.Info("Opening the connector {0} ...", connector.Uri);
-                connector.Open();
-                return true;
-            }
             catch (Exception ex)
             {
-                Logger.ErrorException("Error opening the connector.", ex);
+                Logger.ErrorException("Could not create the connector.", ex);
+                connector = default(TConnector);
                 return false;
             }
         }

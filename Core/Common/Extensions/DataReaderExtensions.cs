@@ -9,6 +9,8 @@ namespace eigenein.SkypeNinja.Core.Common.Extensions
     /// </summary>
     internal static class DataReaderExtensions
     {
+        private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+
         public static string GetString(this IDataReader dataReader, string name)
         {
             int ordinal = dataReader.GetOrdinal(name);
@@ -29,6 +31,13 @@ namespace eigenein.SkypeNinja.Core.Common.Extensions
 
             value = default(TEnum);
             return false;
+        }
+
+        public static DateTime GetDateTime(this IDataReader dataReader, string name)
+        {
+            int ordinal = dataReader.GetOrdinal(name);
+            int seconds = dataReader.GetInt32(ordinal);
+            return Epoch.AddSeconds(seconds);
         }
     }
 }

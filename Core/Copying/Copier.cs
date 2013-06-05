@@ -1,15 +1,16 @@
 ﻿using System;
+
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Copying
 {
-    internal abstract class Copier : ICopier
+    public class Copier
     {
         protected readonly IMessageEnumerator MessageEnumerator;
 
         protected readonly ITargetConnector TargetConnector;
 
-        protected Copier(
+        public Copier(
             IMessageEnumerator messageEnumerator,
             ITargetConnector targetConnector)
         {
@@ -27,14 +28,8 @@ namespace eigenein.SkypeNinja.Core.Copying
                 return false;
             }
 
-            IMessage convertedMessage = ConvertMessage(MessageEnumerator.Current);
-            TargetConnector.InsertMessage(convertedMessage);
+            TargetConnector.InsertMessage(MessageEnumerator.Current);
             return true;
         }
-
-        /// <summary>
-        /// Converts the message.
-        /// </summary>
-        protected abstract IMessage ConvertMessage(IMessage message);
     }
 }

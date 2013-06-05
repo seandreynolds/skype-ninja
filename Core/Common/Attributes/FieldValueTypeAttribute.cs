@@ -8,25 +8,22 @@ namespace eigenein.SkypeNinja.Core.Common.Attributes
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     internal class FieldValueTypeAttribute : Attribute
     {
-        private readonly Type valueType;
-
-        public FieldValueTypeAttribute(Type valueType)
+        public FieldValueTypeAttribute(Type valueType, bool allowMultiple = false)
         {
-            this.valueType = valueType;
+            this.ValueType = valueType;
+            this.AllowMultiple = allowMultiple;
         }
 
-        /// <summary>
-        /// Validates that the value has the expected type.
-        /// </summary>
-        public void Validate(object value)
+        public Type ValueType
         {
-            if (value.GetType() != valueType)
-            {
-                throw new ArgumentException(String.Format(
-                    "The value type is not valid: {0} ({1} expected).",
-                    value.GetType(),
-                    valueType));
-            }
+            get;
+            private set;
+        }
+
+        public bool AllowMultiple
+        {
+            get;
+            private set;
         }
     }
 }

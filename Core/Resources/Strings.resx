@@ -120,7 +120,7 @@
   <data name="Core.Connectors.Source.Skype.SkypeDbSourceConnectorFactory.Help" xml:space="preserve">
     <value>skypedb://path/to/main.db</value>
   </data>
-  <data name="Core.Connectors.Target.Files.FilesTargetConnectorFactory.Help" xml:space="preserve">
-    <value>file://path?format=json|plain|xml|csv&amp;store=simple|zip</value>
+  <data name="Core.Connectors.Target.Json.JsonTargetConnectorFactory.Help" xml:space="preserve">
+    <value>json://path/to/log.json</value>
   </data>
 </root>
