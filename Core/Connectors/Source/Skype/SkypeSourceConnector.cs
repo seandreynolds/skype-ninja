@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 
-using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
+using eigenein.SkypeNinja.Core.Common.Collections;
 using eigenein.SkypeNinja.Core.Connectors.Common.Skype;
 using eigenein.SkypeNinja.Core.Interfaces;
 

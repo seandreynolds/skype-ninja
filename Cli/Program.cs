@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using NLog;
 using eigenein.SkypeNinja.Cli.Common;
+using eigenein.SkypeNinja.Core;
 using eigenein.SkypeNinja.Core.Common;
+using eigenein.SkypeNinja.Core.Common.Collections;
 using eigenein.SkypeNinja.Core.Common.Extensions;
 using eigenein.SkypeNinja.Core.Connectors;
-using eigenein.SkypeNinja.Core.Connectors.Common.Collections;
-using eigenein.SkypeNinja.Core.Copying;
 using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Exceptions;
 using eigenein.SkypeNinja.Core.Interfaces;
@@ -119,6 +119,7 @@ namespace eigenein.SkypeNinja.Cli
         {
             Copier copier = new Copier(
                 sourceConnector.QueryMessages(filters),
+                null,
                 targetConnector);
 
             Statistics statistics = new Statistics();
@@ -151,7 +152,7 @@ namespace eigenein.SkypeNinja.Cli
                 }
                 catch (Exception ex)
                 {
-                    Logger.ErrorException("Could not copy the message.", ex);
+                    Logger.ErrorException("Failed to copy the message.", ex);
                 }
             }
 

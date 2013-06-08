@@ -87,7 +87,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
                     jsonTextWriter.WriteStartArray();
                     foreach (object value in property.Value)
                     {
-                        jsonTextWriter.WriteValue(value.ToString());
+                        jsonTextWriter.WriteValue(value);
                     }
                     jsonTextWriter.WriteEnd();
                 }

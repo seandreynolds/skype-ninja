@@ -2,7 +2,7 @@
 
 using eigenein.SkypeNinja.Core.Enums;
 
-namespace eigenein.SkypeNinja.Core.Connectors.Common.Collections
+namespace eigenein.SkypeNinja.Core.Common.Collections
 {
     public class PropertyCollection : ItemCollection<PropertyType, object>
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Common.Caches;
 
-namespace eigenein.SkypeNinja.Core.Connectors.Common.Collections
+namespace eigenein.SkypeNinja.Core.Common.Collections
 {
     /// <summary>
     /// Represents a collection, each element of which has an enumerable type.

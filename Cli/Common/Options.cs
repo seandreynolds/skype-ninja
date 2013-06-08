@@ -59,6 +59,9 @@ namespace eigenein.SkypeNinja.Cli.Common
             return helpText;
         }
 
+        /// <summary>
+        /// Adds the URI schemes description to the help text.
+        /// </summary>
         private void AddSchemesHelp(
             HelpText helpText,
             IEnumerable<IConnectorFactory> factories)

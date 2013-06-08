@@ -74,12 +74,10 @@
     <Compile Include="Common\Extensions\DataReaderExtensions.cs" />
     <Compile Include="Common\Caches\FieldAttributeCache.cs" />
     <Compile Include="Common\Translator.cs" />
-    <Compile Include="Connectors\Common\Collections\GrouperCollection.cs" />
-    <Compile Include="Connectors\Common\Collections\ItemCollection.cs" />
-    <Compile Include="Connectors\Common\Filter.cs" />
-    <Compile Include="Connectors\Common\Grouper.cs" />
+    <Compile Include="Common\Collections\GrouperCollection.cs" />
+    <Compile Include="Common\Collections\ItemCollection.cs" />
     <Compile Include="Connectors\Common\Message.cs" />
-    <Compile Include="Connectors\Common\Collections\PropertyCollection.cs" />
+    <Compile Include="Common\Collections\PropertyCollection.cs" />
     <Compile Include="Connectors\Common\MessagePath.cs" />
     <Compile Include="Connectors\Common\Skype\SkypeDatabaseLocator.cs" />
     <Compile Include="Connectors\Source\Skype\SkypeIdSourceConnectorFactory.cs" />
@@ -93,8 +91,8 @@
     <Compile Include="Connectors\TargetConnector.cs" />
     <Compile Include="Connectors\Target\Json\JsonTargetConnector.cs" />
     <Compile Include="Connectors\Target\Json\JsonTargetConnectorFactory.cs" />
-    <Compile Include="Connectors\UniversalConnectorFactory.cs" />
-    <Compile Include="Copying\Copier.cs" />
+    <Compile Include="Connectors\ConnectorFactory.cs" />
+    <Compile Include="Copier.cs" />
     <Compile Include="Enums\FilterType.cs" />
     <Compile Include="Enums\MessageSkipReason.cs" />
     <Compile Include="Enums\MessageType.cs" />
@@ -103,7 +101,7 @@
     <Compile Include="Enums\SkypeChatMessageType.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
     <Compile Include="Enums\SkypeEntityClass.cs" />
-    <Compile Include="Connectors\Common\Collections\FilterCollection.cs" />
+    <Compile Include="Common\Collections\FilterCollection.cs" />
     <Compile Include="Enums\SkypeMessageType.cs" />
     <Compile Include="Enums\StatisticsType.cs" />
     <Compile Include="Exceptions\MessageFailedException.cs" />
@@ -112,6 +110,8 @@
     <Compile Include="Common\Helpers\QueryParameters.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
+    <Compile Include="Interfaces\IFilter.cs" />
+    <Compile Include="Interfaces\IGrouper.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\IMessageEnumerator.cs" />
     <Compile Include="Interfaces\ISkypeDatabaseLocator.cs" />
@@ -147,7 +147,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\Groupers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
