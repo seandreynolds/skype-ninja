@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SQLite;
 
 using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Interfaces;
@@ -17,15 +16,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
             {
                 throw new ArgumentException("Skype database path is expected.");
             }
-            // Construct the connection string.
-            string connectionString = String.Format(
-                "Data Source={0};Read Only=True",
-                uri.LocalPath);
-            // Create and open the connection.
-            SQLiteConnection connection = new SQLiteConnection(connectionString);
-            connection.Open();
-            // Create and return the connector.
-            return new SkypeSourceConnector(connection);
+            return SkypeSourceConnector.FromFile(uri.LocalPath);
         }
 
         #endregion

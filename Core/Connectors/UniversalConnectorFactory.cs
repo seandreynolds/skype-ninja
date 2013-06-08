@@ -19,7 +19,8 @@ namespace eigenein.SkypeNinja.Core.Connectors
         private static readonly Dictionary<string, ISourceConnectorFactory> SourceFactoryCache =
             new Dictionary<string, ISourceConnectorFactory>()
                 {
-                    {ConnectorUriScheme.SkypeDb, new SkypeDbSourceConnectorFactory()}
+                    {ConnectorUriScheme.SkypeDb, new SkypeDbSourceConnectorFactory()},
+                    {ConnectorUriScheme.SkypeId, new SkypeIdSourceConnectorFactory()},
                 };
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace eigenein.SkypeNinja.Core.Connectors
         private static readonly Dictionary<string, ITargetConnectorFactory> TargetFactoryCache =
             new Dictionary<string, ITargetConnectorFactory>()
                 {
-                    {ConnectorUriScheme.Json, new JsonTargetConnectorFactory()}
+                    {ConnectorUriScheme.Json, new JsonTargetConnectorFactory()},
                 };
 
         public static IEnumerable<ISourceConnectorFactory> SourceConnectorFactories

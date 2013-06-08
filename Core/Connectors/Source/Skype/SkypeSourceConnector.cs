@@ -11,6 +11,21 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
     {
         private readonly SQLiteConnection connection;
 
+        /// <summary>
+        /// Initializes an instance of <see cref="SkypeSourceConnector"/> from the
+        /// specified database path.
+        /// </summary>
+        public static SkypeSourceConnector FromFile(string path)
+        {
+            // Construct the connection string.
+            string connectionString = String.Format("Data Source={0};Read Only=True", path);
+            // Create and open the connection.
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
+            connection.Open();
+            // Create and return the connector.
+            return new SkypeSourceConnector(connection);
+        }
+
         public SkypeSourceConnector(SQLiteConnection connection)
         {
             this.connection = connection;

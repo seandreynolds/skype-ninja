@@ -31,11 +31,13 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
         public JsonTargetConnector(TextWriter textWriter)
         {
             // Initialize the writer.
-            jsonTextWriter = new JsonTextWriter(textWriter);
-            // TODO: make these parameters configurable.
-            jsonTextWriter.Formatting = Formatting.Indented;
-            jsonTextWriter.Indentation = 2;
-            jsonTextWriter.IndentChar = ' ';
+            jsonTextWriter = new JsonTextWriter(textWriter)
+                             {
+                                 // TODO: make these parameters configurable.
+                                 Formatting = Formatting.Indented,
+                                 Indentation = 2,
+                                 IndentChar = ' '
+                             };
             // Write the comments.
             // TODO: include actual assembly name and version.
             // Start the message array.
