@@ -6,7 +6,7 @@ using eigenein.SkypeNinja.Core.Interfaces;
 namespace eigenein.SkypeNinja.Core.Connectors.Common.Skype
 {
     /// <summary>
-    /// Skype database locator for Windows 7/Vista and Windows 8.
+    /// Default Skype database locator implementation.
     /// https://support.skype.com/en/faq/FA413/how-do-i-back-up-my-configuration-and-instant-message-history
     /// </summary>
     internal class SkypeDatabaseLocator : ISkypeDatabaseLocator

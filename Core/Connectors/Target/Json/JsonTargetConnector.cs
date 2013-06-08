@@ -24,6 +24,8 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
                 {PropertyType.Path, "path"},
                 {PropertyType.Timestamp, "timestamp"},
                 {PropertyType.Author, "author"},
+                {PropertyType.FromDisplayName, "from_display_name"},
+                {PropertyType.SkypeMessageStatus, "skype_message_status"}
             };
 
         private readonly JsonTextWriter jsonTextWriter;
@@ -77,7 +79,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
                     !attribute.AllowMultiple)
                 {
                     // Write the simple value.
-                    jsonTextWriter.WriteValue(property.Value.First().ToString());
+                    jsonTextWriter.WriteValue(property.Value.First());
                 }
                 else
                 {

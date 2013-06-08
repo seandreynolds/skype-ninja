@@ -143,8 +143,9 @@ namespace eigenein.SkypeNinja.Cli
                             totalCount);
                     }
                 }
-                catch (MessageSkippedException)
+                catch (MessageSkippedException ex)
                 {
+                    Logger.InfoException("The message is skipped.", ex);
                     statistics[StatisticsType.Total] += 1;
                     statistics[StatisticsType.Skipped] += 1;
                 }

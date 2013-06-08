@@ -28,9 +28,21 @@ namespace eigenein.SkypeNinja.Core.Enums
         Author,
 
         /// <summary>
+        /// Message author display name.
+        /// </summary>
+        [FieldValueType(typeof(string))]
+        FromDisplayName,
+
+        /// <summary>
         /// Message path after grouping.
         /// </summary>
         [FieldValueType(typeof(MessagePath))]
-        Path
+        Path,
+
+        /// <summary>
+        /// Skype message status.
+        /// </summary>
+        [FieldValueType(typeof(SkypeChatMessageStatus))]
+        SkypeMessageStatus
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="Connectors\Common\Collections\FilterCollection.cs" />
     <Compile Include="Enums\SkypeMessageType.cs" />
     <Compile Include="Enums\StatisticsType.cs" />
+    <Compile Include="Exceptions\MessageFailedException.cs" />
     <Compile Include="Exceptions\MessageSkippedException.cs" />
     <Compile Include="Common\Extensions\UriExtensions.cs" />
     <Compile Include="Common\Helpers\QueryParameters.cs" />

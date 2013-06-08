@@ -11,12 +11,10 @@ namespace eigenein.SkypeNinja.Core.Exceptions
     [Serializable]
     public class MessageSkippedException : Exception
     {
-        private readonly MessageSkipReason reason;
-
-        public MessageSkippedException(string message, MessageSkipReason reason)
-            : base(message)
+        public MessageSkippedException(MessageSkipReason reason)
+            : base(reason.ToString())
         {
-            this.reason = reason;
+            this.Reason = reason;
         }
 
         /// <summary>
@@ -24,10 +22,8 @@ namespace eigenein.SkypeNinja.Core.Exceptions
         /// </summary>
         public MessageSkipReason Reason
         {
-            get
-            {
-                return reason;
-            }
+            get;
+            private set;
         }
 
         public override void GetObjectData(
@@ -35,7 +31,7 @@ namespace eigenein.SkypeNinja.Core.Exceptions
             StreamingContext context)
         {
             base.GetObjectData(info, context);
-            info.AddValue("Reason", reason);
+            info.AddValue("Reason", Reason);
         }
     }
 }

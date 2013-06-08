@@ -47,19 +47,26 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
                 return readMessage(reader);
             }
 
-            throw new MessageSkippedException(
-                "Unknown message type.",
-                MessageSkipReason.SkypeUnknownMessageType);
+            throw new MessageSkippedException(MessageSkipReason.SkypeUnknownMessageType);
         }
 
         private static IMessage CreateSaidMessage(SQLiteDataReader reader)
         {
+            // Initialize the message.
             IMessage message = new Message(MessageType.Said);
-
+            // Add the message properties.
             message.Properties.Add(PropertyType.Body, reader.GetString("body"));
             message.Properties.Add(PropertyType.Author, reader.GetString("author"));
             message.Properties.Add(PropertyType.Timestamp, reader.GetDateTime("timestamp"));
-
+            message.Properties.Add(PropertyType.FromDisplayName, reader.GetString("fromDisplayName"));
+            // Add the message status (just a bit longer than other properties).
+            SkypeChatMessageStatus skypeMessageStatus;
+            if (!reader.TryGetEnum("chatMessageStatus", out skypeMessageStatus))
+            {
+                throw new MessageFailedException("Invalid message status.");
+            }
+            message.Properties.Add(PropertyType.SkypeMessageStatus, skypeMessageStatus);
+            // Return the initialized message.
             return message;
         }
     }

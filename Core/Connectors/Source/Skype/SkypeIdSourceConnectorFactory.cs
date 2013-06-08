@@ -1,6 +1,8 @@
 ﻿using System;
 
 using eigenein.SkypeNinja.Core.Common.Attributes;
+using eigenein.SkypeNinja.Core.Common.Extensions;
+using eigenein.SkypeNinja.Core.Common.Helpers;
 using eigenein.SkypeNinja.Core.Connectors.Common.Skype;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -11,9 +13,16 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
     {
         private static bool ParseUri(Uri uri, out string userName, out string skypeId)
         {
-            // TODO: userName.
-            userName = Environment.UserName;
+            // Parse the query parameters.
+            QueryParameters parameters = uri.GetQueryParameters();
+            if (!parameters.TryGetValue("user", out userName))
+            {
+                // Use current user by default.
+                userName = Environment.UserName;
+            }
+            // Skype ID is the URI "host" part.
             skypeId = uri.Host;
+            // Validate the user name.
             return !String.IsNullOrWhiteSpace(userName);
         }
 
@@ -22,9 +31,8 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
         /// </summary>
         private static bool GetSkypeDatabaseLocator(out ISkypeDatabaseLocator locator)
         {
-            Version osVersion = Environment.OSVersion.Version;
-            // Windows 7/8 and Vista.
-            if (osVersion.Major == 6)
+            // Windows.
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
                 locator = new SkypeDatabaseLocator();
                 return true;
