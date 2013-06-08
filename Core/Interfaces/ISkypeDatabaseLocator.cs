@@ -10,6 +10,6 @@ namespace eigenein.SkypeNinja.Core.Interfaces
         /// <summary>
         /// Finds the location of the main Skype database file.
         /// </summary>
-        string FindDatabase(string userName, string skypeId);
+        bool FindDatabase(string userName, string skypeId, out string databasePath);
     }
 }

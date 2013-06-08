@@ -1,6 +1,7 @@
 ﻿using System;
 
 using eigenein.SkypeNinja.Core.Common.Attributes;
+using eigenein.SkypeNinja.Core.Connectors.Common.Skype;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
@@ -8,36 +9,33 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
     [ConnectorFactory("Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help")]
     internal class SkypeIdSourceConnectorFactory : ISourceConnectorFactory
     {
-        private static readonly char[] SkypeIdSeparators = new[] {'/', '\\'};
-
         private static bool ParseUri(Uri uri, out string userName, out string skypeId)
         {
-            // Path optionally contains the Windows username.
-            string[] parts = uri.LocalPath.Split(SkypeIdSeparators, 2);
-            // skypeid://skypeid
-            if (parts.Length == 1)
-            {
-                skypeId = parts[0];
-                userName = Environment.UserName;
-                return !String.IsNullOrWhiteSpace(skypeId);
-            }
-            // skypeid://username/skypeid
-            userName = parts[0];
-            skypeId = parts[1];
-            return !String.IsNullOrWhiteSpace(userName) && !String.IsNullOrWhiteSpace(skypeId);
+            // TODO: userName.
+            userName = Environment.UserName;
+            skypeId = uri.Host;
+            return !String.IsNullOrWhiteSpace(userName);
         }
 
+        /// <summary>
+        /// Gets the database locator for current environment.
+        /// </summary>
         private static bool GetSkypeDatabaseLocator(out ISkypeDatabaseLocator locator)
         {
-            throw new NotImplementedException();
+            Version osVersion = Environment.OSVersion.Version;
+            // Windows 7/8 and Vista.
+            if (osVersion.Major == 6)
+            {
+                locator = new SkypeDatabaseLocator();
+                return true;
+            }
+            // The OS is not supported.
+            locator = null;
+            return false;
         }
 
         public ISourceConnector CreateConnector(Uri uri)
         {
-            if (String.IsNullOrWhiteSpace(uri.LocalPath))
-            {
-                throw new ArgumentException("Skype ID is required.");
-            }
             // Parse the URI.
             string userName;
             string skypeId;
@@ -52,9 +50,13 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
                 throw new ArgumentException(String.Format("Unsupported environment: {0}.", Environment.OSVersion));
             }
             // Get the database location.
-            string datapasePath = locator.FindDatabase(userName, skypeId);
+            string databasePath;
+            if (!locator.FindDatabase(userName, skypeId, out databasePath))
+            {
+                throw new ArgumentException(String.Format("Database is not found at: \"{0}\".", databasePath));
+            }
             // Initialize the connector from the obtained path.
-            return SkypeSourceConnector.FromFile(datapasePath);
+            return SkypeSourceConnector.FromFile(databasePath);
         }
     }
 }

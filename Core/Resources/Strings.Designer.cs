@@ -70,6 +70,15 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to skypeid://skypeid[?user=username].
+        /// </summary>
+        internal static string Core_Connectors_Source_Skype_SkypeIdSourceConnectorFactory_Help {
+            get {
+                return ResourceManager.GetString("Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to json://path/to/log.json.
         /// </summary>
         internal static string Core_Connectors_Target_Json_JsonTargetConnectorFactory_Help {

@@ -81,6 +81,8 @@
     <Compile Include="Connectors\Common\Message.cs" />
     <Compile Include="Connectors\Common\Collections\PropertyCollection.cs" />
     <Compile Include="Connectors\Common\MessagePath.cs" />
+    <Compile Include="Connectors\Common\Skype\SkypeDatabaseLocator.cs" />
+    <Compile Include="Connectors\Source\Skype\SkypeIdSourceConnectorFactory.cs" />
     <Compile Include="Connectors\Source\Skype\SkypeSourceMessageFactory.cs" />
     <Compile Include="Connectors\Common\Skype\SkypeSQLiteCommandFactory.cs" />
     <Compile Include="Connectors\Connector.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Interfaces\IConnectorFactory.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\IMessageEnumerator.cs" />
+    <Compile Include="Interfaces\ISkypeDatabaseLocator.cs" />
     <Compile Include="Interfaces\ISourceConnector.cs" />
     <Compile Include="Interfaces\ISourceConnectorFactory.cs" />
     <Compile Include="Interfaces\ITargetConnector.cs" />
