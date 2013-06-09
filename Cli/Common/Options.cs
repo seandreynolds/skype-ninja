@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using CommandLine;
 using CommandLine.Text;
 
-using eigenein.SkypeNinja.Core.Common.Attributes;
-using eigenein.SkypeNinja.Core.Common.Caches;
 using eigenein.SkypeNinja.Core.Common.Collections;
 using eigenein.SkypeNinja.Core.Common.Helpers;
 using eigenein.SkypeNinja.Core.Connectors;
-using eigenein.SkypeNinja.Core.Interfaces;
+using eigenein.SkypeNinja.Core.Enums;
 
 namespace eigenein.SkypeNinja.Cli.Common
 {
@@ -18,6 +16,20 @@ namespace eigenein.SkypeNinja.Cli.Common
     /// </summary>
     internal class Options
     {
+        private static readonly IDictionary<string, string> SchemeHelpStrings =
+            new Dictionary<string, string>()
+            {
+                {ConnectorUriScheme.SkypeDb, Translator.GetString("Help.Schemes.SkypeDb")},
+                {ConnectorUriScheme.SkypeId, Translator.GetString("Help.Schemes.SkypeId")},
+                {ConnectorUriScheme.Json, Translator.GetString("Help.Schemes.Json")},
+            };
+
+        private static readonly IDictionary<string, string> GrouperHelpStrings =
+            new Dictionary<string, string>()
+            {
+                {"author", Translator.GetString("Help.Groupers.Author")},
+            };
+
         // ReSharper disable UnusedAutoPropertyAccessor.Global
 
         [Option(
@@ -82,9 +94,9 @@ namespace eigenein.SkypeNinja.Cli.Common
                 current => HelpText.DefaultParsingErrorsHandler(this, current));
             // Add the schemes help.
             helpText.AddPostOptionsLine("Available source schemes:");
-            AddSchemesHelp(helpText, UniversalConnectorFactory.SourceConnectorFactories);
+            AddSchemesHelp(helpText, UniversalConnectorFactory.SourceUriSchemes);
             helpText.AddPostOptionsLine("Available target schemes:");
-            AddSchemesHelp(helpText, UniversalConnectorFactory.TargetConnectorFactories);
+            AddSchemesHelp(helpText, UniversalConnectorFactory.TargetUriSchemes);
             // Add the groupers help.
             helpText.AddPostOptionsLine("Available groupers:");
             AddGroupersHelp(helpText, GrouperCollection.AvailableGroupers);
@@ -98,13 +110,13 @@ namespace eigenein.SkypeNinja.Cli.Common
         /// </summary>
         private void AddSchemesHelp(
             HelpText helpText,
-            IEnumerable<IConnectorFactory> factories)
+            IEnumerable<string> schemes)
         {
-            foreach (IConnectorFactory factory in factories)
+            foreach (string scheme in schemes)
             {
-                ConnectorFactoryAttribute attribute =
-                    ClassAttributeCache<ConnectorFactoryAttribute>.GetAttribute(factory.GetType());
-                helpText.AddPostOptionsLine(String.Format("  {0}", Translator.GetString(attribute.Help)));
+                helpText.AddPostOptionsLine(String.Format(
+                    "  {0}",
+                    SchemeHelpStrings[scheme]));
             }
         }
 
@@ -117,7 +129,10 @@ namespace eigenein.SkypeNinja.Cli.Common
         {
             foreach (string grouper in groupers)
             {
-                helpText.AddPostOptionsLine(String.Format("  {0}", grouper));
+                helpText.AddPostOptionsLine(String.Format(
+                    "  {0}\t{1}", 
+                    grouper, 
+                    GrouperHelpStrings[grouper]));
             }
         }
     }

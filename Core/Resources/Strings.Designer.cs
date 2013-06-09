@@ -61,29 +61,38 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to skypedb://path/to/main.db.
+        ///   Looks up a localized string similar to By the message author username..
         /// </summary>
-        internal static string Core_Connectors_Source_Skype_SkypeDbSourceConnectorFactory_Help {
+        internal static string Help_Groupers_Author {
             get {
-                return ResourceManager.GetString("Core.Connectors.Source.Skype.SkypeDbSourceConnectorFactory.Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to skypeid://skypeid.
-        /// </summary>
-        internal static string Core_Connectors_Source_Skype_SkypeIdSourceConnectorFactory_Help {
-            get {
-                return ResourceManager.GetString("Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help", resourceCulture);
+                return ResourceManager.GetString("Help.Groupers.Author", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to json://path/to/log.json.
         /// </summary>
-        internal static string Core_Connectors_Target_Json_JsonTargetConnectorFactory_Help {
+        internal static string Help_Schemes_Json {
             get {
-                return ResourceManager.GetString("Core.Connectors.Target.Json.JsonTargetConnectorFactory.Help", resourceCulture);
+                return ResourceManager.GetString("Help.Schemes.Json", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to skypedb://path/to/main.db.
+        /// </summary>
+        internal static string Help_Schemes_SkypeDb {
+            get {
+                return ResourceManager.GetString("Help.Schemes.SkypeDb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to skypeid://skypeid.
+        /// </summary>
+        internal static string Help_Schemes_SkypeId {
+            get {
+                return ResourceManager.GetString("Help.Schemes.SkypeId", resourceCulture);
             }
         }
     }

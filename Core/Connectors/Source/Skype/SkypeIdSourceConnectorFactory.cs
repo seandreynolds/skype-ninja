@@ -1,12 +1,10 @@
 ﻿using System;
 
-using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Connectors.Common.Skype;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
 {
-    [ConnectorFactory("Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help")]
     internal class SkypeIdSourceConnectorFactory : ISourceConnectorFactory
     {
         /// <summary>

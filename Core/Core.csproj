@@ -67,8 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Attributes\ConnectorFactoryAttribute.cs" />
-    <Compile Include="Common\Caches\ClassAttributeCache.cs" />
     <Compile Include="Common\Attributes\FieldValueTypeAttribute.cs" />
     <Compile Include="Common\Groupers\AuthorGrouper.cs" />
     <Compile Include="Common\Statistics.cs" />

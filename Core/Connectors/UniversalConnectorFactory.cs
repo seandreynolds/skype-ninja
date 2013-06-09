@@ -32,19 +32,19 @@ namespace eigenein.SkypeNinja.Core.Connectors
                     {ConnectorUriScheme.Json, new JsonTargetConnectorFactory()},
                 };
 
-        public static IEnumerable<ISourceConnectorFactory> SourceConnectorFactories
+        public static IEnumerable<string> SourceUriSchemes
         {
             get
             {
-                return SourceFactoryCache.Values;
+                return SourceFactoryCache.Keys;
             }
         }
 
-        public static IEnumerable<ITargetConnectorFactory> TargetConnectorFactories
+        public static IEnumerable<string> TargetUriSchemes
         {
             get
             {
-                return TargetFactoryCache.Values;
+                return TargetFactoryCache.Keys;
             }
         }
 

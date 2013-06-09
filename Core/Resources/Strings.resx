@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Core.Connectors.Source.Skype.SkypeDbSourceConnectorFactory.Help" xml:space="preserve">
+  <data name="Help.Schemes.SkypeDb" xml:space="preserve">
     <value>skypedb://path/to/main.db</value>
   </data>
-  <data name="Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help" xml:space="preserve">
+  <data name="Help.Schemes.SkypeId" xml:space="preserve">
     <value>skypeid://skypeid</value>
   </data>
-  <data name="Core.Connectors.Target.Json.JsonTargetConnectorFactory.Help" xml:space="preserve">
+  <data name="Help.Schemes.Json" xml:space="preserve">
     <value>json://path/to/log.json</value>
+  </data>
+  <data name="Help.Groupers.Author" xml:space="preserve">
+    <value>By the message author username.</value>
   </data>
 </root>

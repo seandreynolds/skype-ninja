@@ -2,7 +2,7 @@
 
 namespace eigenein.SkypeNinja.Core.Enums
 {
-    internal static class ConnectorUriScheme
+    public static class ConnectorUriScheme
     {
         /// <summary>
         /// Skype database file.
