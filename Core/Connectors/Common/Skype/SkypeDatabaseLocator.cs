@@ -14,11 +14,10 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common.Skype
         /// <summary>
         /// Finds the location of the main Skype database file.
         /// </summary>
-        public bool FindDatabase(string userName, string skypeId, out string databasePath)
+        public bool FindDatabase(string skypeId, out string databasePath)
         {
             string applicationDataPath = Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData);
-            // TODO: other user.
             databasePath = Path.Combine(applicationDataPath, "Skype", skypeId, "main.db");
             return File.Exists(databasePath);
         }

@@ -70,7 +70,7 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to skypeid://skypeid[?user=username].
+        ///   Looks up a localized string similar to skypeid://skypeid.
         /// </summary>
         internal static string Core_Connectors_Source_Skype_SkypeIdSourceConnectorFactory_Help {
             get {

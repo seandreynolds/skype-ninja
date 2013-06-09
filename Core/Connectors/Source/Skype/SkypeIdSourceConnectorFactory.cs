@@ -1,8 +1,6 @@
 ﻿using System;
 
 using eigenein.SkypeNinja.Core.Common.Attributes;
-using eigenein.SkypeNinja.Core.Common.Extensions;
-using eigenein.SkypeNinja.Core.Common.Helpers;
 using eigenein.SkypeNinja.Core.Connectors.Common.Skype;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -11,21 +9,6 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
     [ConnectorFactory("Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help")]
     internal class SkypeIdSourceConnectorFactory : ISourceConnectorFactory
     {
-        private static bool ParseUri(Uri uri, out string userName, out string skypeId)
-        {
-            // Parse the query parameters.
-            QueryParameters parameters = uri.GetQueryParameters();
-            if (!parameters.TryGetValue("user", out userName))
-            {
-                // Use current user by default.
-                userName = Environment.UserName;
-            }
-            // Skype ID is the URI "host" part.
-            skypeId = uri.Host;
-            // Validate the user name.
-            return !String.IsNullOrWhiteSpace(userName);
-        }
-
         /// <summary>
         /// Gets the database locator for current environment.
         /// </summary>
@@ -45,11 +28,10 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
         public ISourceConnector CreateConnector(Uri uri)
         {
             // Parse the URI.
-            string userName;
-            string skypeId;
-            if (!ParseUri(uri, out userName, out skypeId))
+            string skypeId = uri.Host;
+            if (String.IsNullOrWhiteSpace(skypeId))
             {
-                throw new ArgumentException(String.Format("Invalid URI: \"{0}\".", uri));
+                throw new ArgumentException("Skype ID is expected.");
             }
             // Get the database locator.
             ISkypeDatabaseLocator locator;
@@ -59,11 +41,11 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
             }
             // Get the database location.
             string databasePath;
-            if (!locator.FindDatabase(userName, skypeId, out databasePath))
+            if (!locator.FindDatabase(skypeId, out databasePath))
             {
                 throw new ArgumentException(String.Format("Database is not found at: \"{0}\".", databasePath));
             }
-            // Initialize the connector from the obtained path.
+            // Initialize the connector with the obtained path.
             return SkypeSourceConnector.FromFile(databasePath);
         }
     }

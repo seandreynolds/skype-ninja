@@ -121,7 +121,7 @@
     <value>skypedb://path/to/main.db</value>
   </data>
   <data name="Core.Connectors.Source.Skype.SkypeIdSourceConnectorFactory.Help" xml:space="preserve">
-    <value>skypeid://skypeid[?user=username]</value>
+    <value>skypeid://skypeid</value>
   </data>
   <data name="Core.Connectors.Target.Json.JsonTargetConnectorFactory.Help" xml:space="preserve">
     <value>json://path/to/log.json</value>

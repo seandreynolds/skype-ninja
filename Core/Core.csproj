@@ -91,7 +91,7 @@
     <Compile Include="Connectors\TargetConnector.cs" />
     <Compile Include="Connectors\Target\Json\JsonTargetConnector.cs" />
     <Compile Include="Connectors\Target\Json\JsonTargetConnectorFactory.cs" />
-    <Compile Include="Connectors\ConnectorFactory.cs" />
+    <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Copier.cs" />
     <Compile Include="Enums\FilterType.cs" />
     <Compile Include="Enums\MessageSkipReason.cs" />
