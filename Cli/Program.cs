@@ -139,14 +139,6 @@ namespace eigenein.SkypeNinja.Cli
                     // Update the statistics.
                     statistics[StatisticsType.Total] += 1;
                     statistics[StatisticsType.Copied] += 1;
-                    // Print the statistics.
-                    int totalCount = statistics[StatisticsType.Total];
-                    if (totalCount % 100 == 0)
-                    {
-                        Logger.Info("{0} of {1} messages copied.",
-                            statistics[StatisticsType.Copied],
-                            totalCount);
-                    }
                 }
                 catch (MessageSkippedException ex)
                 {
