@@ -13,7 +13,13 @@ namespace eigenein.SkypeNinja.Core.Enums
         /// Message class.
         /// </summary>
         [FieldValueType(typeof(MessageClass))]
-        MessageClass,
+        Class,
+
+        /// <summary>
+        /// Message ID.
+        /// </summary>
+        [FieldValueType(typeof(long))]
+        Id,
 
         /// <summary>
         /// Message creation time.

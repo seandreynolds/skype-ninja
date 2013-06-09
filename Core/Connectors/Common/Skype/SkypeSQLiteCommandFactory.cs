@@ -10,6 +10,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common.Skype
     {
         private const string ReadMessagesQuery = @"
             select @chatMessageClass as messageClass,
+                   id as id,
                    author as author,
                    from_dispname as fromDisplayName,
                    timestamp as timestamp,

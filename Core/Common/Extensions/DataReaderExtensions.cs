@@ -17,6 +17,12 @@ namespace eigenein.SkypeNinja.Core.Common.Extensions
             return dataReader.GetString(ordinal);
         }
 
+        public static long GetInt64(this IDataReader dataReader, string name)
+        {
+            int ordinal = dataReader.GetOrdinal(name);
+            return dataReader.GetInt64(ordinal);
+        }
+
         public static TEnum GetEnum<TEnum>(this IDataReader dataReader, string name)
             where TEnum : struct, IConvertible
         {

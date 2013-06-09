@@ -27,9 +27,13 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
         {
             // Initialize the message.
             IMessage message = new Message();
+            // Add the common properties.
             message.Properties.Add(
-                PropertyType.MessageClass, 
+                PropertyType.Class, 
                 reader.GetEnum<MessageClass>("messageClass"));
+            message.Properties.Add(
+                PropertyType.Id,
+                reader.GetInt64("id"));
             // Specific method used to read the message.
             ReadMessageFunc readMessage;
             // Try to read by the message type.

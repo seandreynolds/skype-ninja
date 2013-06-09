@@ -23,7 +23,8 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
         private static readonly IDictionary<PropertyType, string> PropertyNames =
             new Dictionary<PropertyType, string>()
             {
-                {PropertyType.MessageClass, "message_class"},
+                {PropertyType.Id, "id"},
+                {PropertyType.Class, "class"},
                 {PropertyType.Body, "body"},
                 {PropertyType.Group, "group"},
                 {PropertyType.Timestamp, "timestamp"},

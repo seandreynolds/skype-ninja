@@ -1,15 +1,18 @@
 ﻿using System;
 
+using NLog;
+
 using eigenein.SkypeNinja.Core.Common.Collections;
 using eigenein.SkypeNinja.Core.Connectors.Common;
 using eigenein.SkypeNinja.Core.Enums;
-using eigenein.SkypeNinja.Core.Exceptions;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core
 {
     public class Copier
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         private readonly IMessageEnumerator messageEnumerator;
 
         private readonly GrouperCollection groupers;
@@ -36,8 +39,10 @@ namespace eigenein.SkypeNinja.Core
             {
                 return false;
             }
+            IMessage sourceMessage = messageEnumerator.Current;
+            Logger.Info("Copying {0} ...", sourceMessage);
             // Create a copy of the source message.
-            IMessage targetMessage = Message.Copy(messageEnumerator.Current);
+            IMessage targetMessage = Message.Copy(sourceMessage);
             // Apply grouping.
             ApplyGrouping(targetMessage);
             // Insert the message.
