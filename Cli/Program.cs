@@ -79,8 +79,11 @@ namespace eigenein.SkypeNinja.Cli
                     Environment.Exit(ExitCode.UnknownUriScheme);
                 }
 
-                // TODO: filters.
-                statistics = CopyMessages(sourceConnector, null, targetConnector);
+                // Initialize filtering and grouping rules.
+                FilterCollection filters = FilterCollection.FromString(options.Filters);
+                GrouperCollection groupers = GrouperCollection.FromString(options.Groups);
+                // Copy messages.
+                statistics = CopyMessages(sourceConnector, filters, groupers, targetConnector);
             }
             catch (Exception ex)
             {
@@ -115,11 +118,12 @@ namespace eigenein.SkypeNinja.Cli
         private static Statistics CopyMessages(
             ISourceConnector sourceConnector,
             FilterCollection filters,
+            GrouperCollection groupers,
             ITargetConnector targetConnector)
         {
             Copier copier = new Copier(
                 sourceConnector.QueryMessages(filters),
-                null,
+                groupers,
                 targetConnector);
 
             Statistics statistics = new Statistics();

@@ -3,7 +3,7 @@ using System.Resources;
 
 using eigenein.SkypeNinja.Core.Resources;
 
-namespace eigenein.SkypeNinja.Core.Common
+namespace eigenein.SkypeNinja.Core.Common.Helpers
 {
     public static class Translator
     {

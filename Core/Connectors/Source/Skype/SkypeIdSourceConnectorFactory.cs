@@ -25,6 +25,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
             return false;
         }
 
+        /// <summary>
+        /// Creates the connector by the specified URI.
+        /// </summary>
         public ISourceConnector CreateConnector(Uri uri)
         {
             // Parse the URI.
@@ -37,7 +40,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
             ISkypeDatabaseLocator locator;
             if (!GetSkypeDatabaseLocator(out locator))
             {
-                throw new ArgumentException(String.Format("Unsupported environment: {0}.", Environment.OSVersion));
+                throw new ArgumentException(String.Format(
+                    "Unsupported environment: {0}.", 
+                    Environment.OSVersion));
             }
             // Get the database location.
             string databasePath;

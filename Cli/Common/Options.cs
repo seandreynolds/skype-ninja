@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using CommandLine;
 using CommandLine.Text;
 
-using eigenein.SkypeNinja.Core.Common;
 using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Common.Caches;
+using eigenein.SkypeNinja.Core.Common.Helpers;
 using eigenein.SkypeNinja.Core.Connectors;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -17,11 +17,14 @@ namespace eigenein.SkypeNinja.Cli.Common
     /// </summary>
     internal class Options
     {
+        // ReSharper disable UnusedAutoPropertyAccessor.Global
+
         [Option(
             's', 
             "source-uri", 
-            HelpText="Source storage URI.",
-            Required=true)]
+            HelpText = "Source storage URI.",
+            MetaValue = "URI",
+            Required = true)]
         public string SourceUriString
         {
             get;
@@ -31,13 +34,40 @@ namespace eigenein.SkypeNinja.Cli.Common
         [Option(
             't', 
             "target-uri", 
-            HelpText="Target storage URI.",
-            Required=true)]
+            HelpText = "Target storage URI.",
+            MetaValue = "URI",
+            Required = true)]
         public string TargetUriString
         {
             get;
             set;
         }
+
+        [Option(
+            'f',
+            "filter",
+            HelpText = "Message filtering rule.",
+            MetaValue = "FILTERS",
+            Required = false)]
+        public string Filters
+        {
+            get;
+            set;
+        }
+
+        [Option(
+            'g',
+            "groupby",
+            HelpText = "Message grouping rule.",
+            MetaValue = "GROUPERS",
+            Required = false)]
+        public string Groups
+        {
+            get;
+            set;
+        }
+
+        // ReSharper restore UnusedAutoPropertyAccessor.Global
 
         [HelpOption(
             'h', 

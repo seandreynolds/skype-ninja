@@ -73,7 +73,7 @@
     <Compile Include="Common\Statistics.cs" />
     <Compile Include="Common\Extensions\DataReaderExtensions.cs" />
     <Compile Include="Common\Caches\FieldAttributeCache.cs" />
-    <Compile Include="Common\Translator.cs" />
+    <Compile Include="Common\Helpers\Translator.cs" />
     <Compile Include="Common\Collections\GrouperCollection.cs" />
     <Compile Include="Common\Collections\ItemCollection.cs" />
     <Compile Include="Connectors\Common\Message.cs" />
@@ -110,7 +110,6 @@
     <Compile Include="Common\Helpers\QueryParameters.cs" />
     <Compile Include="Interfaces\IConnector.cs" />
     <Compile Include="Interfaces\IConnectorFactory.cs" />
-    <Compile Include="Interfaces\IFilter.cs" />
     <Compile Include="Interfaces\IGrouper.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\IMessageEnumerator.cs" />

@@ -7,6 +7,10 @@ namespace eigenein.SkypeNinja.Core.Common.Collections
 {
     public class GrouperCollection : List<IGrouper>
     {
-        // Nothing.
+        public static GrouperCollection FromString(string groups)
+        {
+            // TODO.
+            return new GrouperCollection();
+        }
     }
 }
