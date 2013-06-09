@@ -10,50 +10,40 @@ using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
 {
-    internal static class SkypeSourceMessageFactory
+    internal static class SkypeSourceMessageReader
     {
         /// <summary>
         /// Reads the message from the data reader.
         /// </summary>
-        private delegate IMessage ReadMessageFunc(SQLiteDataReader reader);
+        private delegate IMessage ReadMessageFunc(IMessage message, SQLiteDataReader reader);
 
         private static readonly Dictionary<SkypeMessageType, ReadMessageFunc> FactoryByMessageType =
             new Dictionary<SkypeMessageType, ReadMessageFunc>()
                 {
-                    {SkypeMessageType.Said, CreateSaidMessage},
+                    {SkypeMessageType.Said, ReadSaidMessage},
                 };
 
-        private static readonly Dictionary<SkypeChatMessageType, ReadMessageFunc> FactoryByChatMessageType =
-            new Dictionary<SkypeChatMessageType, ReadMessageFunc>()
-                {
-                    // TODO.
-                };
-
-        public static IMessage CreateMessage(SQLiteDataReader reader)
+        public static IMessage ReadMessage(SQLiteDataReader reader)
         {
+            // Initialize the message.
+            IMessage message = new Message();
+            message.Properties.Add(PropertyType.MessageClass, reader.GetEnum<MessageClass>("messageClassId"));
+            // Specific method used to read the message.
             ReadMessageFunc readMessage;
-
+            // Try to read by the message type.
             SkypeMessageType messageType;
             if (reader.TryGetEnum("messageType", out messageType) &&
                 FactoryByMessageType.TryGetValue(messageType, out readMessage))
             {
-                return readMessage(reader);
+                message.Properties.Add(PropertyType.SkypeMessageType, messageType);
+                return readMessage(message, reader);
             }
-
-            SkypeChatMessageType chatMessageType;
-            if (reader.TryGetEnum("chatMessageType", out chatMessageType) &&
-                FactoryByChatMessageType.TryGetValue(chatMessageType, out readMessage))
-            {
-                return readMessage(reader);
-            }
-
+            // Could not read the message.
             throw new MessageSkippedException(MessageSkipReason.SkypeUnknownMessageType);
         }
 
-        private static IMessage CreateSaidMessage(SQLiteDataReader reader)
+        private static IMessage ReadSaidMessage(IMessage message, SQLiteDataReader reader)
         {
-            // Initialize the message.
-            IMessage message = new Message(MessageType.Said);
             // Add the message properties.
             message.Properties.Add(PropertyType.Body, reader.GetString("body"));
             message.Properties.Add(PropertyType.Author, reader.GetString("author"));

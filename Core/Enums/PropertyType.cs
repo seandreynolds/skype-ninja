@@ -10,6 +10,12 @@ namespace eigenein.SkypeNinja.Core.Enums
     public enum PropertyType
     {
         /// <summary>
+        /// Message class.
+        /// </summary>
+        [FieldValueType(typeof(MessageClass))]
+        MessageClass,
+
+        /// <summary>
         /// Message creation time.
         /// </summary>
         [FieldValueType(typeof(DateTime))]
@@ -34,15 +40,21 @@ namespace eigenein.SkypeNinja.Core.Enums
         FromDisplayName,
 
         /// <summary>
-        /// Message path after grouping.
+        /// Message group (if grouping is used).
         /// </summary>
-        [FieldValueType(typeof(MessagePath))]
-        Path,
+        [FieldValueType(typeof(MessageGroup))]
+        Group,
 
         /// <summary>
         /// Skype message status.
         /// </summary>
         [FieldValueType(typeof(SkypeChatMessageStatus))]
-        SkypeMessageStatus
+        SkypeMessageStatus,
+
+        /// <summary>
+        /// Skype message type.
+        /// </summary>
+        [FieldValueType(typeof(SkypeMessageType))]
+        SkypeMessageType
     }
 }

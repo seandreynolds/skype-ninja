@@ -7,7 +7,6 @@ namespace eigenein.SkypeNinja.Core.Enums
     /// </summary>
     internal enum SkypeMessageType
     {
-        Invalid = 0,
         SetTopic = 2,
         ConferenceOpensUp = 4,
         VideosessionStarted = 30,

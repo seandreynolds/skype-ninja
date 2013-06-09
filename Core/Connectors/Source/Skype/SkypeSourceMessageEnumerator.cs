@@ -46,7 +46,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Source.Skype
         {
             if (reader.HasRows && reader.Read())
             {
-                current = SkypeSourceMessageFactory.CreateMessage(reader);
+                current = SkypeSourceMessageReader.ReadMessage(reader);
                 return true;
             }
 

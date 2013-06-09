@@ -20,12 +20,14 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
         private static readonly IDictionary<PropertyType, string> PropertyNames =
             new Dictionary<PropertyType, string>()
             {
+                {PropertyType.MessageClass, "message_class"},
                 {PropertyType.Body, "body"},
-                {PropertyType.Path, "path"},
+                {PropertyType.Group, "group"},
                 {PropertyType.Timestamp, "timestamp"},
                 {PropertyType.Author, "author"},
                 {PropertyType.FromDisplayName, "from_display_name"},
-                {PropertyType.SkypeMessageStatus, "skype_message_status"}
+                {PropertyType.SkypeMessageStatus, "skype_message_status"},
+                {PropertyType.SkypeMessageType, "skype_message_type"},
             };
 
         private readonly JsonTextWriter jsonTextWriter;
@@ -63,14 +65,17 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
         {
             // Start the message.
             jsonTextWriter.WriteStartObject();
-            // Write the message type.
-            jsonTextWriter.WritePropertyName("message_type");
-            jsonTextWriter.WriteValue(message.MessageType.ToString());
             // Write the properties.
             foreach (KeyValuePair<PropertyType, IList<object>> property in message.Properties)
             {
+                string propertyName;
+                if (!PropertyNames.TryGetValue(property.Key, out propertyName))
+                {
+                    // Do not write the property.
+                    continue;
+                }
                 // Write the property name.
-                jsonTextWriter.WritePropertyName(PropertyNames[property.Key]);
+                jsonTextWriter.WritePropertyName(propertyName);
                 // Check whether multiple values are allowed.
                 FieldValueTypeAttribute attribute;
                 if (FieldAttributeCache<PropertyType, FieldValueTypeAttribute>.TryGetAttribute(

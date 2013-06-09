@@ -78,10 +78,10 @@
     <Compile Include="Common\Collections\ItemCollection.cs" />
     <Compile Include="Connectors\Common\Message.cs" />
     <Compile Include="Common\Collections\PropertyCollection.cs" />
-    <Compile Include="Connectors\Common\MessagePath.cs" />
+    <Compile Include="Connectors\Common\MessageGroup.cs" />
     <Compile Include="Connectors\Common\Skype\SkypeDatabaseLocator.cs" />
     <Compile Include="Connectors\Source\Skype\SkypeIdSourceConnectorFactory.cs" />
-    <Compile Include="Connectors\Source\Skype\SkypeSourceMessageFactory.cs" />
+    <Compile Include="Connectors\Source\Skype\SkypeSourceMessageReader.cs" />
     <Compile Include="Connectors\Common\Skype\SkypeSQLiteCommandFactory.cs" />
     <Compile Include="Connectors\Connector.cs" />
     <Compile Include="Connectors\SourceConnector.cs" />
@@ -100,7 +100,7 @@
     <Compile Include="Enums\SkypeChatMessageStatus.cs" />
     <Compile Include="Enums\SkypeChatMessageType.cs" />
     <Compile Include="Enums\ConnectorUriScheme.cs" />
-    <Compile Include="Enums\SkypeEntityClass.cs" />
+    <Compile Include="Enums\MessageClass.cs" />
     <Compile Include="Common\Collections\FilterCollection.cs" />
     <Compile Include="Enums\SkypeMessageType.cs" />
     <Compile Include="Enums\StatisticsType.cs" />

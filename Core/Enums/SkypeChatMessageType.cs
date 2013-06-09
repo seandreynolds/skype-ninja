@@ -7,7 +7,6 @@ namespace eigenein.SkypeNinja.Core.Enums
     /// </summary>
     internal enum SkypeChatMessageType
     {
-        Invalid = 0,
         AddedMembers = 1,
         CreatedChatWith = 2,
         Said = 3,

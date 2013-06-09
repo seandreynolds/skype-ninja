@@ -5,7 +5,7 @@ namespace eigenein.SkypeNinja.Core.Enums
     /// <summary>
     /// Class of the Skype entity.
     /// </summary>
-    internal enum SkypeEntityClass
+    internal enum MessageClass
     {
         /// <summary>
         /// Simple chat message (the "messages" table).
