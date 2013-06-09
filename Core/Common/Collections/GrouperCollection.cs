@@ -14,6 +14,14 @@ namespace eigenein.SkypeNinja.Core.Common.Collections
                 {"author", new AuthorGrouper()},
             };
 
+        public static IEnumerable<string> AvailableGroupers
+        {
+            get
+            {
+                return Groupers.Keys;
+            }
+        }
+
         public static GrouperCollection FromString(string groups)
         {
             GrouperCollection groupers = new GrouperCollection();

@@ -6,6 +6,7 @@ using CommandLine.Text;
 
 using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Common.Caches;
+using eigenein.SkypeNinja.Core.Common.Collections;
 using eigenein.SkypeNinja.Core.Common.Helpers;
 using eigenein.SkypeNinja.Core.Connectors;
 using eigenein.SkypeNinja.Core.Interfaces;
@@ -84,6 +85,9 @@ namespace eigenein.SkypeNinja.Cli.Common
             AddSchemesHelp(helpText, UniversalConnectorFactory.SourceConnectorFactories);
             helpText.AddPostOptionsLine("Available target schemes:");
             AddSchemesHelp(helpText, UniversalConnectorFactory.TargetConnectorFactories);
+            // Add the groupers help.
+            helpText.AddPostOptionsLine("Available groupers:");
+            AddGroupersHelp(helpText, GrouperCollection.AvailableGroupers);
             // Done.
             helpText.AddPostOptionsLine(String.Empty);
             return helpText;
@@ -101,6 +105,19 @@ namespace eigenein.SkypeNinja.Cli.Common
                 ConnectorFactoryAttribute attribute =
                     ClassAttributeCache<ConnectorFactoryAttribute>.GetAttribute(factory.GetType());
                 helpText.AddPostOptionsLine(String.Format("  {0}", Translator.GetString(attribute.Help)));
+            }
+        }
+
+        /// <summary>
+        /// Adds the groupers description to the help text.
+        /// </summary>
+        private void AddGroupersHelp(
+            HelpText helpText,
+            IEnumerable<string> groupers)
+        {
+            foreach (string grouper in groupers)
+            {
+                helpText.AddPostOptionsLine(String.Format("  {0}", grouper));
             }
         }
     }
