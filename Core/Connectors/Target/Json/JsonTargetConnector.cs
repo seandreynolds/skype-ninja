@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 using eigenein.SkypeNinja.Core.Common.Attributes;
 using eigenein.SkypeNinja.Core.Common.Caches;
+using eigenein.SkypeNinja.Core.Connectors.Common;
 using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Interfaces;
 
@@ -17,6 +18,8 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
     /// </summary>
     internal class JsonTargetConnector : TargetConnector
     {
+        private delegate void SerializerMethod(JsonTextWriter writer, IList<object> objects);
+
         private static readonly IDictionary<PropertyType, string> PropertyNames =
             new Dictionary<PropertyType, string>()
             {
@@ -30,7 +33,31 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
                 {PropertyType.SkypeMessageType, "skype_message_type"},
             };
 
+        private static readonly IDictionary<PropertyType, SerializerMethod> Serializers =
+            new Dictionary<PropertyType, SerializerMethod>()
+            {
+                {PropertyType.Group, SerializeGroup},
+            };
+
         private readonly JsonTextWriter jsonTextWriter;
+
+        private static void SerializeGroup(JsonTextWriter writer, IList<object> objects)
+        {
+            MessageGroup group = (MessageGroup)objects.First();
+            // Serialize as an array.
+            writer.WriteStartArray();
+            try
+            {
+                foreach (string part in group)
+                {
+                    writer.WriteValue(part);
+                }
+            }
+            finally
+            {
+                writer.WriteEnd();
+            }
+        }
 
         public JsonTargetConnector(TextWriter textWriter)
         {
@@ -76,25 +103,40 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
                 }
                 // Write the property name.
                 jsonTextWriter.WritePropertyName(propertyName);
-                // Check whether multiple values are allowed.
-                FieldValueTypeAttribute attribute;
-                if (FieldAttributeCache<PropertyType, FieldValueTypeAttribute>.TryGetAttribute(
-                    property.Key.ToString(),
-                    out attribute) &&
-                    !attribute.AllowMultiple)
+                // Check for the custom serializer method.
+                SerializerMethod serialize;
+                if (Serializers.TryGetValue(property.Key, out serialize))
                 {
-                    // Write the simple value.
-                    jsonTextWriter.WriteValue(property.Value.First());
+                    serialize(jsonTextWriter, property.Value);
                 }
                 else
                 {
-                    // Write the property value array.
-                    jsonTextWriter.WriteStartArray();
-                    foreach (object value in property.Value)
+                    // Check whether multiple values are allowed.
+                    FieldValueTypeAttribute attribute;
+                    if (FieldAttributeCache<PropertyType, FieldValueTypeAttribute>.TryGetAttribute(
+                        property.Key.ToString(),
+                        out attribute) &&
+                        !attribute.AllowMultiple)
                     {
-                        jsonTextWriter.WriteValue(value);
+                        // Write the simple value.
+                        jsonTextWriter.WriteValue(property.Value.First());
                     }
-                    jsonTextWriter.WriteEnd();
+                    else
+                    {
+                        // Write the property value array.
+                        jsonTextWriter.WriteStartArray();
+                        try
+                        {
+                            foreach (object value in property.Value)
+                            {
+                                jsonTextWriter.WriteValue(value);
+                            }
+                        }
+                        finally
+                        {
+                            jsonTextWriter.WriteEnd();
+                        }
+                    }
                 }
             }
             // End the message.

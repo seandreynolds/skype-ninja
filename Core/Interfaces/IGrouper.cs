@@ -7,6 +7,6 @@ namespace eigenein.SkypeNinja.Core.Interfaces
     /// </summary>
     public interface IGrouper
     {
-        bool TryGetGroup(IMessage message, out string group);
+        string GetGroupPart(IMessage message);
     }
 }

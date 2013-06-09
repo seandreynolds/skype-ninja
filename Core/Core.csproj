@@ -70,6 +70,7 @@
     <Compile Include="Common\Attributes\ConnectorFactoryAttribute.cs" />
     <Compile Include="Common\Caches\ClassAttributeCache.cs" />
     <Compile Include="Common\Attributes\FieldValueTypeAttribute.cs" />
+    <Compile Include="Common\Groupers\AuthorGrouper.cs" />
     <Compile Include="Common\Statistics.cs" />
     <Compile Include="Common\Extensions\DataReaderExtensions.cs" />
     <Compile Include="Common\Caches\FieldAttributeCache.cs" />
@@ -146,9 +147,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Groupers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

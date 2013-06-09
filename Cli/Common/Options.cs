@@ -58,7 +58,7 @@ namespace eigenein.SkypeNinja.Cli.Common
         [Option(
             'g',
             "groupby",
-            HelpText = "Message grouping rule.",
+            HelpText = "Comma-separated groupers.",
             MetaValue = "GROUPERS",
             Required = false)]
         public string Groups

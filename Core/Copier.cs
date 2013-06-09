@@ -1,6 +1,9 @@
 ﻿using System;
 
 using eigenein.SkypeNinja.Core.Common.Collections;
+using eigenein.SkypeNinja.Core.Connectors.Common;
+using eigenein.SkypeNinja.Core.Enums;
+using eigenein.SkypeNinja.Core.Exceptions;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core
@@ -28,13 +31,37 @@ namespace eigenein.SkypeNinja.Core
         /// </summary>
         public bool CopyNextMessage()
         {
+            // Move to the next message.
             if (!messageEnumerator.MoveNext())
             {
                 return false;
             }
-
-            targetConnector.InsertMessage(messageEnumerator.Current);
+            // Create a copy of the source message.
+            IMessage targetMessage = Message.Copy(messageEnumerator.Current);
+            // Apply grouping.
+            ApplyGrouping(targetMessage);
+            // Insert the message.
+            targetConnector.InsertMessage(targetMessage);
+            // The message is copied.
             return true;
+        }
+
+        private void ApplyGrouping(IMessage message)
+        {
+            // Remove the group property if any.
+            object oldGroup;
+            if (message.Properties.TryGet(PropertyType.Group, out oldGroup))
+            {
+                message.Properties.Remove(PropertyType.Group);
+            }
+            // Add the new property.
+            MessageGroup group = new MessageGroup();
+            foreach (IGrouper grouper in groupers)
+            {
+                string part = grouper.GetGroupPart(message);
+                group.AddPart(part);
+            }
+            message.Properties.Add(PropertyType.Group, group);
         }
     }
 }

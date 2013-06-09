@@ -7,19 +7,38 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common
 {
     internal class Message : IMessage
     {
-        private readonly PropertyCollection properties;
-
-        public Message()
+        /// <summary>
+        /// Creates a copy of the specified message.
+        /// </summary>
+        public static IMessage Copy(IMessage message)
         {
-            this.properties = new PropertyCollection();
+            return new Message(new PropertyCollection(message.Properties));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="Message"/>.
+        /// </summary>
+        public Message()
+        {
+            this.Properties = new PropertyCollection();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="Message"/> with
+        /// thi given properties.
+        /// </summary>
+        public Message(PropertyCollection properties)
+        {
+            this.Properties = properties;
+        }
+
+        /// <summary>
+        /// Gets the message properties.
+        /// </summary>
         public PropertyCollection Properties
         {
-            get
-            {
-                return properties;
-            }
+            get;
+            private set;
         }
     }
 }

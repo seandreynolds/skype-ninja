@@ -87,7 +87,7 @@ namespace eigenein.SkypeNinja.Cli
             }
             catch (Exception ex)
             {
-                Logger.FatalException("Copying has failed.", ex);
+                Logger.Fatal("Copying has failed: {0}", ex.Message);
             }
             finally
             {
@@ -150,13 +150,13 @@ namespace eigenein.SkypeNinja.Cli
                 }
                 catch (MessageSkippedException ex)
                 {
-                    Logger.InfoException("The message is skipped.", ex);
+                    Logger.Info("The message is skipped: {0}", ex.Message);
                     statistics[StatisticsType.Total] += 1;
                     statistics[StatisticsType.Skipped] += 1;
                 }
                 catch (Exception ex)
                 {
-                    Logger.ErrorException("Failed to copy the message.", ex);
+                    Logger.Error("Failed to copy the message: {0}", ex.Message);
                 }
             }
 
@@ -186,7 +186,7 @@ namespace eigenein.SkypeNinja.Cli
             }
             catch (Exception ex)
             {
-                Logger.ErrorException("Could not create the connector.", ex);
+                Logger.Error("Could not create the connector: {0}", ex.Message);
                 connector = default(TConnector);
                 return false;
             }
