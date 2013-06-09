@@ -9,7 +9,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common.Skype
     internal class SkypeSQLiteCommandFactory
     {
         private const string ReadMessagesQuery = @"
-            select @chatMessageClassId as messageClassId,
+            select @chatMessageClass as messageClass,
                    author as author,
                    from_dispname as fromDisplayName,
                    timestamp as timestamp,
@@ -32,7 +32,7 @@ namespace eigenein.SkypeNinja.Core.Connectors.Common.Skype
             SQLiteCommand command = new SQLiteCommand(ReadMessagesQuery, connection);
 
             command.Parameters.Add(new SQLiteParameter(
-                "@chatMessageClassId", 
+                "@chatMessageClass", 
                 MessageClass.ChatMessage));
 
             return command;
