@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Attributes\FieldValueTypeAttribute.cs" />
+    <Compile Include="Common\Filters\SortFilter.cs" />
     <Compile Include="Common\Groupers\AuthorGrouper.cs" />
     <Compile Include="Common\Statistics.cs" />
     <Compile Include="Common\Extensions\DataReaderExtensions.cs" />
@@ -92,7 +93,9 @@
     <Compile Include="Connectors\Target\Json\JsonTargetConnectorFactory.cs" />
     <Compile Include="Connectors\UniversalConnectorFactory.cs" />
     <Compile Include="Copier.cs" />
+    <Compile Include="Enums\FilterSpecifier.cs" />
     <Compile Include="Enums\FilterType.cs" />
+    <Compile Include="Enums\GrouperSpecifier.cs" />
     <Compile Include="Enums\MessageSkipReason.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Enums\PropertyType.cs" />

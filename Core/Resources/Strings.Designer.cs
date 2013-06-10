@@ -61,6 +61,15 @@ namespace eigenein.SkypeNinja.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specifiers fields and sorting order..
+        /// </summary>
+        internal static string Help_Filters_Sort {
+            get {
+                return ResourceManager.GetString("Help.Filters.Sort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By the message author username..
         /// </summary>
         internal static string Help_Groupers_Author {

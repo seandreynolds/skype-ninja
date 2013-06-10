@@ -50,7 +50,7 @@ namespace eigenein.SkypeNinja.Test.Core.Common.Extensions
                 expectedStrings.Select(item => item.Split('=')).ToDictionary(pair => pair[0], pair => pair[1]);
             CollectionAssert.AreEquivalent(
                 expected,
-                new Uri(uriString).GetQueryParameters(),
+                new Uri(uriString).ParseQuery(),
                 "Parameters values do not match.");
         }
     }

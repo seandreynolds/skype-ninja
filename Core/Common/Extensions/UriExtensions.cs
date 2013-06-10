@@ -22,9 +22,9 @@ namespace eigenein.SkypeNinja.Core.Common.Extensions
                 uri = new Uri(uriString);
                 return true;
             }
-            catch (Exception ex)
+            catch (UriFormatException ex)
             {
-                Logger.ErrorException("Error parsing the URI.", ex);
+                Logger.Error("Error parsing the URI: {0}", ex.Message);
                 uri = null;
                 return false;
             }
@@ -36,10 +36,15 @@ namespace eigenein.SkypeNinja.Core.Common.Extensions
         /// <remarks>
         /// <see cref="System.Web.HttpUtility"/> class is not accessible in Client Profile.
         /// </remarks>
-        public static QueryParameters GetQueryParameters(this Uri uri)
+        public static QueryParameters ParseQuery(this Uri uri)
+        {
+            return ParseQuery(uri.Query);
+        }
+
+        public static QueryParameters ParseQuery(string query)
         {
             MatchCollection matches = Regex.Matches(
-                uri.Query, @"[\?&]((?<name>[^&=]+)=(?<value>[^&=#]*))",
+                query, @"[\?&]((?<name>[^&=]+)=(?<value>[^&=#]*))",
                 RegexOptions.Compiled);
             return new QueryParameters(matches.Cast<Match>().ToDictionary(
                 m => Uri.UnescapeDataString(m.Groups["name"].Value),

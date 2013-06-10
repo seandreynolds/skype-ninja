@@ -129,4 +129,7 @@
   <data name="Help.Groupers.Author" xml:space="preserve">
     <value>By the message author username.</value>
   </data>
+  <data name="Help.Filters.Sort" xml:space="preserve">
+    <value>Specifiers fields and sorting order.</value>
+  </data>
 </root>

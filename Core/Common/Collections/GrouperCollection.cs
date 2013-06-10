@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using eigenein.SkypeNinja.Core.Common.Groupers;
+using eigenein.SkypeNinja.Core.Enums;
 using eigenein.SkypeNinja.Core.Interfaces;
 
 namespace eigenein.SkypeNinja.Core.Common.Collections
@@ -11,10 +12,10 @@ namespace eigenein.SkypeNinja.Core.Common.Collections
         private static readonly IDictionary<string, IGrouper> Groupers =
             new Dictionary<string, IGrouper>()
             {
-                {"author", new AuthorGrouper()},
+                {GrouperSpecifier.Author, new AuthorGrouper()},
             };
 
-        public static IEnumerable<string> AvailableGroupers
+        public static IEnumerable<string> Specifiers
         {
             get
             {
@@ -30,7 +31,7 @@ namespace eigenein.SkypeNinja.Core.Common.Collections
                 foreach (string group in groups.Split(','))
                 {
                     IGrouper grouper;
-                    if (Groupers.TryGetValue(group.ToLowerInvariant(), out grouper))
+                    if (Groupers.TryGetValue(group.Trim().ToLowerInvariant(), out grouper))
                     {
                         groupers.Add(grouper);
                     }

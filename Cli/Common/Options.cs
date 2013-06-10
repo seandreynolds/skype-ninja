@@ -27,7 +27,13 @@ namespace eigenein.SkypeNinja.Cli.Common
         private static readonly IDictionary<string, string> GrouperHelpStrings =
             new Dictionary<string, string>()
             {
-                {"author", Translator.GetString("Help.Groupers.Author")},
+                {GrouperSpecifier.Author, Translator.GetString("Help.Groupers.Author")},
+            };
+
+        private static readonly IDictionary<string, string> FilterHelpStrings =
+            new Dictionary<string, string>()
+            {
+                {FilterSpecifier.Sort, Translator.GetString("Help.Filters.Sort")},
             };
 
         // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -71,7 +77,7 @@ namespace eigenein.SkypeNinja.Cli.Common
         [Option(
             'g',
             "groupby",
-            HelpText = "Comma-separated groupers.",
+            HelpText = "Comma-separated groupers. E.g. \"month,author\".",
             MetaValue = "GROUPERS",
             Required = false)]
         public string Groups
@@ -90,8 +96,7 @@ namespace eigenein.SkypeNinja.Cli.Common
         {
             // Build the standard help text.
             HelpText helpText = HelpText.AutoBuild(
-                this, 
-                current => HelpText.DefaultParsingErrorsHandler(this, current));
+                this, current => HelpText.DefaultParsingErrorsHandler(this, current));
             // Add the schemes help.
             helpText.AddPostOptionsLine("Available source schemes:");
             AddSchemesHelp(helpText, UniversalConnectorFactory.SourceUriSchemes);
@@ -99,7 +104,10 @@ namespace eigenein.SkypeNinja.Cli.Common
             AddSchemesHelp(helpText, UniversalConnectorFactory.TargetUriSchemes);
             // Add the groupers help.
             helpText.AddPostOptionsLine("Available groupers:");
-            AddGroupersHelp(helpText, GrouperCollection.AvailableGroupers);
+            AddSpecifierHelp(helpText, GrouperHelpStrings, GrouperCollection.Specifiers);
+            // Add the filters help.
+            helpText.AddPostOptionsLine("Available filters:");
+            AddSpecifierHelp(helpText, FilterHelpStrings, FilterCollection.Specifiers);
             // Done.
             helpText.AddPostOptionsLine(String.Empty);
             return helpText;
@@ -120,19 +128,17 @@ namespace eigenein.SkypeNinja.Cli.Common
             }
         }
 
-        /// <summary>
-        /// Adds the groupers description to the help text.
-        /// </summary>
-        private void AddGroupersHelp(
+        private void AddSpecifierHelp(
             HelpText helpText,
-            IEnumerable<string> groupers)
+            IDictionary<string, string> specifierHelpStrings,
+            IEnumerable<string> specifiers)
         {
-            foreach (string grouper in groupers)
+            foreach (string specifier in specifiers)
             {
                 helpText.AddPostOptionsLine(String.Format(
                     "  {0}\t{1}", 
-                    grouper, 
-                    GrouperHelpStrings[grouper]));
+                    specifier,
+                    specifierHelpStrings[specifier]));
             }
         }
     }
