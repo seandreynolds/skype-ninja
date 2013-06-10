@@ -32,12 +32,14 @@ namespace eigenein.SkypeNinja.Core.Common.Collections
         {
             // Initialize the empty collection.
             FilterCollection filters = new FilterCollection();
-            // Parse the filters string.
-            QueryParameters parameters = UriExtensions.ParseQuery(filtersQuery);
-            // Iterate over the parameters and add the filters.
-            foreach (KeyValuePair<string, string> parameter in parameters)
+            if (!String.IsNullOrWhiteSpace(filtersQuery))
             {
-                
+                // Parse the filters string.
+                QueryParameters parameters = UriExtensions.ParseQuery(filtersQuery);
+                // Iterate over the parameters and add the filters.
+                foreach (KeyValuePair<string, string> parameter in parameters)
+                {
+                }
             }
             // Return the filters.
             return filters;

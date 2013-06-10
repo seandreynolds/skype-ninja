@@ -25,7 +25,9 @@ namespace eigenein.SkypeNinja.Core.Common.Collections
 
         public static GrouperCollection FromString(string groups)
         {
+            // Initialize the empty collection.
             GrouperCollection groupers = new GrouperCollection();
+            // Parse the input.
             if (!String.IsNullOrWhiteSpace(groups))
             {
                 foreach (string group in groups.Split(','))

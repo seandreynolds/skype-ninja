@@ -38,6 +38,9 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
             new Dictionary<PropertyType, SerializerMethod>()
             {
                 {PropertyType.Group, SerializeGroup},
+                {PropertyType.Class, SerializeEnum},
+                {PropertyType.SkypeMessageStatus, SerializeEnum},
+                {PropertyType.SkypeMessageType, SerializeEnum},
             };
 
         private readonly JsonTextWriter jsonTextWriter;
@@ -58,6 +61,11 @@ namespace eigenein.SkypeNinja.Core.Connectors.Target.Json
             {
                 writer.WriteEnd();
             }
+        }
+
+        private static void SerializeEnum(JsonTextWriter writer, IList<object> objects)
+        {
+            writer.WriteValue(objects.First().ToString());
         }
 
         public JsonTargetConnector(TextWriter textWriter)
